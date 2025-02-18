@@ -6,7 +6,7 @@ import Exception.ReservationException;
 import bo.Reservation;
 import dal.ReservationDAO;
 
-public class BLL {
+public class ReservationBLL {
 	private ReservationDAO dao;
 	
 	public ReservationBLL() {

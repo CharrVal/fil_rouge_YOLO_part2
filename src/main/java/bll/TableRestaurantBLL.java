@@ -6,7 +6,7 @@ import Exception.TableRestaurantException;
 import bo.TableRestaurant;
 import dal.TableRestaurantDAO;
 
-public class TableTableRestaurantBLL {
+public class TableRestaurantBLL {
 	private TableRestaurantDAO dao;
 	
 	public TableRestaurantBLL() {
