@@ -4,11 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Pizza Yolo</title>
+	<meta charset="UTF-8">
+	<title>Pizza Yolo</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
+<header>
+	<h1>YOLO</h1>
+</header>
 <body>
-<h1>YOLO</h1>
 <c:forEach var="restaurant" items="${listeRestaurants }">
 		<fieldset>
 			<table>
@@ -46,5 +49,7 @@
 			</table>
 		</fieldset>
 	</c:forEach>
+<footer>
+</footer>
 </body>
 </html>
