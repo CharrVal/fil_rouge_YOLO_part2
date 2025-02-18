@@ -6,37 +6,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import bo.Utilisateur;
+import bo.Carte;
 
-public class UtilisateurDAO implements DAO<Utilisateur>{
+public class CarteDAO implements DAO<Carte> {
 	private EntityManagerFactory emf;
 	
-	public UtilisateurDAO() {
+	public CarteDAO() {
 		emf = Persistence.createEntityManagerFactory("user");
 	}
 	
 	@Override
-	public List<Utilisateur> select() {
+	public List<Carte> select() {
 		EntityManager em = emf.createEntityManager();
-		List<Utilisateur> resultat = em.createQuery("from Utilisateur", Utilisateur.class).getResultList();
+		List<Carte> resultat = em.createQuery("from Carte", Carte.class).getResultList();
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public Utilisateur selectById(int id) {
+	public Carte selectById(int id) {
 		EntityManager em = emf.createEntityManager();
-		Utilisateur resultat = em.find(Utilisateur.class, id);
+		Carte resultat = em.find(Carte.class, id);
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public void update(Utilisateur utilisateur) {
+	public void update(Carte carte) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.merge(utilisateur);
+			em.merge(carte);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,11 +47,27 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public void insert(Utilisateur utilisateur) {
+	public void insert(Carte carte) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.persist(utilisateur);
+			em.persist(carte);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}
+		
+		em.close();	
+	}
+
+	@Override
+	public void delete(Carte carte) {
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		try {
+			em.remove(em.merge(carte));
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,30 +78,14 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public void delete(Utilisateur utilisateur) {
-		EntityManager em = emf.createEntityManager();
-		
-		em.getTransaction().begin();
-		try {
-			em.remove(em.merge(utilisateur));
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			em.getTransaction().rollback();
-		}
-		
-		em.close();	
-	}
-
-	@Override
-	public Utilisateur deletebyId(int id) {
+	public Carte deletebyId(int id) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Utilisateur utilisateur = null;
+		Carte carte = null;
 		try {
-			utilisateur = em.find(Utilisateur.class, id);
-			if (utilisateur != null) {
-				em.remove(utilisateur);
+			carte = em.find(Carte.class, id);
+			if (carte != null) {
+				em.remove(carte);
 				em.getTransaction().commit();
 			} else {
 				em.getTransaction().rollback();
@@ -97,7 +97,7 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 			em.close();
 		}
 		
-		return utilisateur;
+		return carte;
 	}
-
+	
 }
