@@ -60,7 +60,7 @@ local.properties
 #.project
 
 # Ignore the persistence.xml file
-java/main/resources/persistence.xml
+src/main/resources/persistence.xml
 /target/
 
 target/
