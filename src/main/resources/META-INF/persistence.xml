@@ -20,12 +20,12 @@
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;databasename=YOLO;trustservercertificate=true" />
-			<property name="javax.persistence.jdbc.user" value="maud" />
-			<property name="javax.persistence.jdbc.password" value="maud" />
+			<property name="javax.persistence.jdbc.user" value="regis" />
+			<property name="javax.persistence.jdbc.password" value="regis" />
 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" />
 		</properties>
 	</persistence-unit>	
