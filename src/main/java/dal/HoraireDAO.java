@@ -6,37 +6,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import bo.Utilisateur;
+import bo.Horaire;
 
-public class UtilisateurDAO implements DAO<Utilisateur>{
+public class HoraireDAO implements DAO<Horaire>  {
 	private EntityManagerFactory emf;
 	
-	public UtilisateurDAO() {
+	public HoraireDAO() {
 		emf = Persistence.createEntityManagerFactory("user");
 	}
 	
 	@Override
-	public List<Utilisateur> select() {
+	public List<Horaire> select() {
 		EntityManager em = emf.createEntityManager();
-		List<Utilisateur> resultat = em.createQuery("from Utilisateur", Utilisateur.class).getResultList();
+		List<Horaire> resultat = em.createQuery("from Carte", Horaire.class).getResultList();
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public Utilisateur selectById(int id) {
+	public Horaire selectById(int id) {
 		EntityManager em = emf.createEntityManager();
-		Utilisateur resultat = em.find(Utilisateur.class, id);
+		Horaire resultat = em.find(Horaire.class, id);
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public void update(Utilisateur utilisateur) {
+	public void update(Horaire horaire) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.merge(utilisateur);
+			em.merge(horaire);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,11 +47,27 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public void insert(Utilisateur utilisateur) {
+	public void insert(Horaire horaire) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.persist(utilisateur);
+			em.persist(horaire);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}
+		
+		em.close();	
+	}
+
+	@Override
+	public void delete(Horaire horaire) {
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		try {
+			em.remove(em.merge(horaire));
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,30 +78,14 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public void delete(Utilisateur utilisateur) {
-		EntityManager em = emf.createEntityManager();
-		
-		em.getTransaction().begin();
-		try {
-			em.remove(em.merge(utilisateur));
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			em.getTransaction().rollback();
-		}
-		
-		em.close();	
-	}
-
-	@Override
-	public Utilisateur deletebyId(int id) {
+	public Horaire deletebyId(int id) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Utilisateur utilisateur = null;
+		Horaire horaire = null;
 		try {
-			utilisateur = em.find(Utilisateur.class, id);
-			if (utilisateur != null) {
-				em.remove(utilisateur);
+			horaire = em.find(Horaire.class, id);
+			if (horaire != null) {
+				em.remove(horaire);
 				em.getTransaction().commit();
 			} else {
 				em.getTransaction().rollback();
@@ -97,7 +97,7 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 			em.close();
 		}
 		
-		return utilisateur;
+		return horaire;
 	}
-
+	
 }

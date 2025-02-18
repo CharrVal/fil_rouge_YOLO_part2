@@ -6,37 +6,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import bo.Utilisateur;
+import bo.TableRestaurant;
 
-public class UtilisateurDAO implements DAO<Utilisateur>{
+public class TableRestaurantDAO implements DAO<TableRestaurant> {
 	private EntityManagerFactory emf;
 	
-	public UtilisateurDAO() {
+	public TableRestaurantDAO() {
 		emf = Persistence.createEntityManagerFactory("user");
 	}
 	
 	@Override
-	public List<Utilisateur> select() {
+	public List<TableRestaurant> select() {
 		EntityManager em = emf.createEntityManager();
-		List<Utilisateur> resultat = em.createQuery("from Utilisateur", Utilisateur.class).getResultList();
+		List<TableRestaurant> resultat = em.createQuery("from TableRestaurant", TableRestaurant.class).getResultList();
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public Utilisateur selectById(int id) {
+	public TableRestaurant selectById(int id) {
 		EntityManager em = emf.createEntityManager();
-		Utilisateur resultat = em.find(Utilisateur.class, id);
+		TableRestaurant resultat = em.find(TableRestaurant.class, id);
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public void update(Utilisateur utilisateur) {
+	public void update(TableRestaurant tableRestaurant) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.merge(utilisateur);
+			em.merge(tableRestaurant);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,27 +47,11 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public void insert(Utilisateur utilisateur) {
+	public void insert(TableRestaurant tableRestaurant) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.persist(utilisateur);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			em.getTransaction().rollback();
-		}
-		
-		em.close();		
-	}
-
-	@Override
-	public void delete(Utilisateur utilisateur) {
-		EntityManager em = emf.createEntityManager();
-		
-		em.getTransaction().begin();
-		try {
-			em.remove(em.merge(utilisateur));
+			em.persist(tableRestaurant);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,14 +62,30 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public Utilisateur deletebyId(int id) {
+	public void delete(TableRestaurant tableRestaurant) {
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		try {
+			em.remove(em.merge(tableRestaurant));
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}
+		
+		em.close();	
+	}
+
+	@Override
+	public TableRestaurant deletebyId(int id) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Utilisateur utilisateur = null;
+		TableRestaurant tableRestaurant = null;
 		try {
-			utilisateur = em.find(Utilisateur.class, id);
-			if (utilisateur != null) {
-				em.remove(utilisateur);
+			tableRestaurant = em.find(TableRestaurant.class, id);
+			if (tableRestaurant != null) {
+				em.remove(tableRestaurant);
 				em.getTransaction().commit();
 			} else {
 				em.getTransaction().rollback();
@@ -97,7 +97,7 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 			em.close();
 		}
 		
-		return utilisateur;
+		return tableRestaurant;
 	}
-
+	
 }

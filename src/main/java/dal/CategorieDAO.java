@@ -6,37 +6,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import bo.Utilisateur;
+import bo.Categorie;
 
-public class UtilisateurDAO implements DAO<Utilisateur>{
+public class CategorieDAO implements DAO<Categorie> {
 	private EntityManagerFactory emf;
 	
-	public UtilisateurDAO() {
+	public CategorieDAO() {
 		emf = Persistence.createEntityManagerFactory("user");
 	}
 	
 	@Override
-	public List<Utilisateur> select() {
+	public List<Categorie> select() {
 		EntityManager em = emf.createEntityManager();
-		List<Utilisateur> resultat = em.createQuery("from Utilisateur", Utilisateur.class).getResultList();
+		List<Categorie> resultat = em.createQuery("from Categorie", Categorie.class).getResultList();
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public Utilisateur selectById(int id) {
+	public Categorie selectById(int id) {
 		EntityManager em = emf.createEntityManager();
-		Utilisateur resultat = em.find(Utilisateur.class, id);
+		Categorie resultat = em.find(Categorie.class, id);
 		em.close();
 		return resultat;
 	}
 
 	@Override
-	public void update(Utilisateur utilisateur) {
+	public void update(Categorie categorie) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.merge(utilisateur);
+			em.merge(categorie);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,11 +47,11 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public void insert(Utilisateur utilisateur) {
+	public void insert(Categorie categorie) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.persist(utilisateur);
+			em.persist(categorie);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,12 +62,12 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public void delete(Utilisateur utilisateur) {
+	public void delete(Categorie categorie) {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
 		try {
-			em.remove(em.merge(utilisateur));
+			em.remove(em.merge(categorie));
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,14 +78,14 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	}
 
 	@Override
-	public Utilisateur deletebyId(int id) {
+	public Categorie deletebyId(int id) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Utilisateur utilisateur = null;
+		Categorie categorie = null;
 		try {
-			utilisateur = em.find(Utilisateur.class, id);
-			if (utilisateur != null) {
-				em.remove(utilisateur);
+			categorie = em.find(Categorie.class, id);
+			if (categorie != null) {
+				em.remove(categorie);
 				em.getTransaction().commit();
 			} else {
 				em.getTransaction().rollback();
@@ -97,7 +97,7 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 			em.close();
 		}
 		
-		return utilisateur;
+		return categorie;
 	}
 
 }
