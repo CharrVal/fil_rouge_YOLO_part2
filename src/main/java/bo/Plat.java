@@ -4,10 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
-@Entity @Table()
+@Entity
 public class Plat {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -16,6 +16,7 @@ public class Plat {
 	private String description;
 	
 	@OneToOne
+	@JoinColumn(name="id_categories")
 	private Categorie categorie;
 
 	public Plat(int id, String nom, double prix, String description, Categorie categorie) {

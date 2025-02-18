@@ -8,9 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-@Entity @Table()
+@Entity
 public class Carte {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -18,18 +17,20 @@ public class Carte {
 	private String description;
 	
 	@OneToMany
-	@JoinColumn(name="carte_id")
+	@JoinColumn(name="id_cartes")
 	private List<Plat> plats;
 	
-	public Carte(int id, String nom, String description) {
+	public Carte(int id, String nom, String description, List<Plat> plats) {
 		this.id = id;
 		this.nom = nom;
 		this.description = description;
+		this.plats = plats;
 	}
 	
-	public Carte(String nom, String description) {
+	public Carte(String nom, String description, List<Plat> plats) {
 		this.nom = nom;
 		this.description = description;
+		this.plats = plats;
 	}
 	
 	public Carte() {}

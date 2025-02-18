@@ -1,9 +1,14 @@
 package bo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity @Table()
@@ -16,9 +21,17 @@ public class Utilisateur {
 	private String email;
 	private String login;
 	private String password;
+	
+	@OneToOne
+	@JoinColumn(name="id_roles")
 	private Role role;
+	
+	@OneToMany
+	@JoinColumn(name="id_utilisateur")
+	private List<Reservation> reservations;
+
 		
-	public Utilisateur(int id, String nom, String prenom, String telephone, String email, String login, String password, Role role) {
+	public Utilisateur(int id, String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -27,9 +40,10 @@ public class Utilisateur {
 		this.login = login;
 		this.password = password;
 		this.role = role;
+		this.reservations = reservations;
 	}
 
-	public Utilisateur(String nom, String prenom, String telephone, String email, String login, String password, Role role) {
+	public Utilisateur(String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.telephone = telephone;
@@ -37,6 +51,7 @@ public class Utilisateur {
 		this.login = login;
 		this.password = password;
 		this.role = role;
+		this.reservations = reservations;
 	}
 
 	public Utilisateur() {}
@@ -103,5 +118,13 @@ public class Utilisateur {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}	
+	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
 }

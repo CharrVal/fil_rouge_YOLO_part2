@@ -1,9 +1,13 @@
 package bo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity	@Table
@@ -13,15 +17,21 @@ public class TableRestaurant {
 	private int nbPlaces;
 	private int numeroTable;
 	
-	public TableRestaurant(int id, int nbPlaces, int numeroTable) {
+	@OneToMany
+	@JoinColumn(name="id_tables_restaurant")
+	private List<Reservation> reservations;
+	
+	public TableRestaurant(int id, int nbPlaces, int numeroTable, List<Reservation> reservations) {
 		this.id = id;
 		this.nbPlaces = nbPlaces;
 		this.numeroTable = numeroTable;
+		this.reservations = reservations;
 	}
-	
-	public TableRestaurant(int nbPlaces, int numeroTable) {
+
+	public TableRestaurant(int nbPlaces, int numeroTable, List<Reservation> reservations) {
 		this.nbPlaces = nbPlaces;
 		this.numeroTable = numeroTable;
+		this.reservations = reservations;
 	}
 	
 	public TableRestaurant() {}
@@ -49,4 +59,12 @@ public class TableRestaurant {
 	public void setNumeroTable(int numeroTable) {
 		this.numeroTable = numeroTable;
 	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}	
 }
