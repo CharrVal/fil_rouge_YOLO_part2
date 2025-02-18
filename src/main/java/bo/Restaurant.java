@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity @Table
+@Entity @Table(name="restaurants")
 public class Restaurant {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -20,6 +20,7 @@ public class Restaurant {
 	private String url_image;
 	
 	@OneToOne
+	@JoinColumn(name="id_cartes")
 	private Carte carte;
 	
 	@OneToMany
