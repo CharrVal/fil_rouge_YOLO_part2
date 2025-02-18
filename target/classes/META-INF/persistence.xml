@@ -7,8 +7,14 @@
 	
 	<persistence-unit name="SQLServer">
 	
+		<class>bo.Carte</class>
+		<class>bo.Categorie</class>
+		<class>bo.Horaire</class>
+		<class>bo.Plat</class>
+		<class>bo.Reservation</class>
 		<class>bo.Restaurant</class>
 		<class>bo.Role</class>
+		<class>bo.TableRestaurant</class>
 		<class>bo.Utilisateur</class>
 	
 		<properties>
@@ -19,7 +25,7 @@
 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" />
 		</properties>
 	</persistence-unit>	

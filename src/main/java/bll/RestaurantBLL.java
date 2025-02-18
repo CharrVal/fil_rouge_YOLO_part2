@@ -9,11 +9,12 @@ import dal.RestaurantDAO;
 public class RestaurantBLL {
 	private RestaurantDAO dao;
 		
-		public RestaurantBLL() {
-			dao = new RestaurantDAO();
-		}
+//		public RestaurantBLL() {
+//			dao = new RestaurantDAO();
+//		}
 		
 		public List<Restaurant> select() {
+			dao = new RestaurantDAO();
 			return dao.select();
 		}
 		
