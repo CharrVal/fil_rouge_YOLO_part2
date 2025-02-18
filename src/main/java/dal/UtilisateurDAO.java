@@ -2,6 +2,7 @@ package dal;
 
 import java.util.List;
 
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -12,7 +13,7 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	private EntityManagerFactory emf;
 	
 	public UtilisateurDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override
@@ -99,5 +100,24 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 		
 		return utilisateur;
 	}
+	
+	public Utilisateur connecterUtilisateur(String login, String password) throws NamingException {
+	    EntityManager em = emf.createEntityManager();
+	    Utilisateur utilisateur = null;
+
+	    try {
+	        utilisateur = em.createQuery("SELECT u FROM Utilisateur u WHERE u.login = :login AND u.password = :password", Utilisateur.class)
+	                        .setParameter("login", login)
+	                        .setParameter("password", password)
+	                        .getSingleResult();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        em.close();
+	    }
+
+	    return utilisateur;
+	}
+
 
 }
