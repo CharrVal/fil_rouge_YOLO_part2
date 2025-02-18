@@ -2,6 +2,8 @@ package bll;
 
 import java.util.List;
 
+import javax.naming.NamingException;
+
 import Exception.UtilisateurException;
 import bo.Utilisateur;
 import dal.UtilisateurDAO;
@@ -33,5 +35,9 @@ public class UtilisateurBLL {
 	public void update(Utilisateur utilisateur) throws UtilisateurException {
 		// verifier(utilisateur);
 		dao.update(utilisateur);
+	}
+	
+	public Utilisateur connecterUtilisateur(String login, String password) throws NamingException {
+		return dao.connecterUtilisateur(login, password);
 	}
 }
