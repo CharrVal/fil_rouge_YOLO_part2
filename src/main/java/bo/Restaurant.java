@@ -11,15 +11,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity @Table
+@Entity @Table(name="restaurants")
 public class Restaurant {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String adresse;
+	private String email;
 	private String url_image;
 	
 	@OneToOne
+	@JoinColumn(name="id_cartes")
 	private Carte carte;
 	
 	@OneToMany
@@ -38,11 +40,12 @@ public class Restaurant {
 	@JoinColumn(name="id_restaurants")
 	private List<Horaire> horaires;
 
-	public Restaurant(int id, String nom, String adresse, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
+	public Restaurant(int id, String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
 			List<Utilisateur> utilisateurs, List<Horaire> horaires) {
 		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
+		this.email = email;
 		this.url_image = url_image;
 		this.carte = carte;
 		this.tablesRestaurant = tablesRestaurant;
@@ -51,10 +54,11 @@ public class Restaurant {
 		this.horaires = horaires;
 	}
 	
-	public Restaurant(String nom, String adresse, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
+	public Restaurant(String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
 			List<Utilisateur> utilisateurs, List<Horaire> horaires) {
 		this.nom = nom;
 		this.adresse = adresse;
+		this.email = email;
 		this.url_image = url_image;
 		this.carte = carte;
 		this.tablesRestaurant = tablesRestaurant;
@@ -87,6 +91,14 @@ public class Restaurant {
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUrl_image() {

@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity @Table()
+@Entity @Table(name="utilisateurs")
 public class Utilisateur {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

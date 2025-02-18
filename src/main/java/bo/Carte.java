@@ -8,8 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity
+@Entity @Table(name="cartes")
 public class Carte {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
