@@ -31,7 +31,12 @@ import bo.Utilisateur;
 	        String url = httpRequest.getServletPath();
 	        
 	        //Tout ce qui se trouve après .css sera à enlever quand l'application fonctionnera correctement !!
-	        if (url.equals("/connexion") || url.contains(".css") || url.equals("/accueil") || url.equals("/listeRestaurants") || url.equals("/inscription")) {
+	        if (url.equals("/connexion") 
+	        		|| url.equals("/accueil") 
+	        		|| url.startsWith("/css/") 
+	        		|| url.startsWith("/images/") 
+	        		|| url.startsWith("/js/") 
+	        		|| url.equals("/listeRestaurants")) {
 	            chain.doFilter(httpRequest, httpResponse);
 	            return;
 	        }
