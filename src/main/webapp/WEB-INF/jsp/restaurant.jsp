@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,29 +15,28 @@
 				<input type="submit" value="Inscrivez-vous pour réserver">
 			</form>
 		</div>
-		
 		<div>
-		<h2>Nos horaires</h2>
-			<c:forEach items="${restaurant.horaires}" var="horaire" varStatus="status">
-				<div>			
-					<label for="jour${status.index}">Jour ${status.index + 1} : </label>
-					<div>
-						<input id="jour${status.index}" readonly value="${horaire.jour}"/>
-					</div>
-					<div>
-						<input readonly value="${horaire.ouverture}"/>
-					</div>
-					<div>
-						<input readonly value="${horaire.fermeture}"/>
-					</div>
-				</div>
-			</c:forEach>
+			<a href="connexion">Vous avez déjà un compte</a>
 		</div>
 		
+	<div>
+		<h2>Nos horaires</h2>
+			<c:forEach items="${restaurant.horaires}" var="horaire" varStatus="status">
+					<div>
+						<p>${horaire.jour} :
+						<fmt:parseDate value="${horaire.ouverture}" pattern="yyyy-MM-dd'T'HH:mm" var="ouvertureDate" type="both" />
+						<fmt:formatDate value="${ouvertureDate}" pattern="HH:mm" />
+						-
+						<fmt:parseDate value="${horaire.fermeture}" pattern="yyyy-MM-dd'T'HH:mm" var="fermetureDate" type="both" />
+						<fmt:formatDate value="${fermetureDate}" pattern="HH:mm" />
+						</p>
+					</div>
+			</c:forEach>
+	</div>
 		<div>
 			<form action="carte" method="GET">
 				<input type="hidden" name="id" value="${Carte.id }">	
-				<input type="submit" value="Afficher la carte">
+				<input type="submit" value="Voir la carte">
 			</form>
 			
 			<form action="listeRestaurants" method="GET">

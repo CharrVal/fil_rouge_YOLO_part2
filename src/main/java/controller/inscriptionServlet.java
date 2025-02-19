@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/inscription")
-public class InscriptionServlet extends HttpServlet {
+public class inscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtilisateurBLL utilisateurbll = new UtilisateurBLL();
 
