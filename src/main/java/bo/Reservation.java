@@ -2,6 +2,7 @@ package bo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,8 @@ import javax.persistence.Table;
 public class Reservation {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name="nombre_personne")
 	private int nbPersonne;
 	private String statut;
 	private LocalDate horaireReservation;
