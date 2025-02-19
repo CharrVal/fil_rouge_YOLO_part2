@@ -1,0 +1,74 @@
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+        /* Conteneur principal */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh; /* Prend toute la hauteur */
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            background: #eee9b9;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+            border-bottom: 2px solid #ddd; /* Délimitation */
+        }
+        .header img {
+            height: 40px;
+        }
+        .logout-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #dc3545;
+        }
+        .logout-icon:hover {
+            color: #c82333;
+        }
+        /* Profil */
+        .profile-header {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .profile-info {
+            text-align: left;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .profile-info p {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        /* Boutons */
+        .btn-block {
+            width: 100%;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: gray;
+            width: 100%;
+            padding: 15px 0;
+            border-top: 2px solid #ddd; /* Délimitation */
+        }
+ 
