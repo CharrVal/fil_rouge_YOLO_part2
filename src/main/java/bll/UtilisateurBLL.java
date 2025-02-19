@@ -23,10 +23,14 @@ public class UtilisateurBLL {
 		return dao.selectById(id);
 	}
 	
-	public void insert(Utilisateur utilisateur) throws UtilisateurException {
-		//verifier(utilisateur);
-		dao.insert(utilisateur);
+	public void insert(Utilisateur utilisateur) throws UtilisateurException, NamingException {
+	    Utilisateur existant = dao.connecterUtilisateur(utilisateur.getLogin(), utilisateur.getPassword());
+	    if (existant != null) {
+	        throw new UtilisateurException("Un compte avec ce login existe déjà.");
+	    }
+	    dao.insert(utilisateur);
 	}
+
 
 	public void delete(Utilisateur utilisateur) {
 		dao.delete(utilisateur);
