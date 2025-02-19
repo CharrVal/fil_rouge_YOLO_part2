@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +30,22 @@
 	    <h1 class="display-4 fw-bold lh-1 pb-3">${carte.nom}</h1>		
 	</div>
 	
-	<c:forEach items="${carte.plats}" var="plat" varStatus="status">
-		<h2>${plat.categorie.libelle}</h2>
-		<p>${plat.nom}.......${plat.prix}</p>
-		<p>${plat.description}</p>
+	<c:set var="categoriesAffichees" value="" />
+	 
+	<c:forEach items="${carte.plats}" var="plat">
+	    <c:if test="${not fn:contains(categoriesAffichees, plat.categorie.libelle)}">
+	        <!-- Affiche la catégorie -->
+	        <h2>${plat.categorie.libelle}</h2>
+	        
+	        <c:set var="categoriesAffichees" value="${categoriesAffichees},${plat.categorie.libelle}" />
+	
+	        <c:forEach items="${carte.plats}" var="p">
+	            <c:if test="${p.categorie.libelle == plat.categorie.libelle}">
+	                <p>${p.nom}.......................................${p.prix} €</p>
+	                <p>${p.description}</p>
+	            </c:if>
+	        </c:forEach>
+	    </c:if>
 	</c:forEach>
 	
 	<div>
