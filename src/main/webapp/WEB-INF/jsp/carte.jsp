@@ -32,8 +32,24 @@
 	<c:forEach items="${carte.plats}" var="plat" varStatus="status">
 		<h2>${plat.categorie.libelle}</h2>
 		<p>${plat.nom}.......${plat.prix}</p>
+		<p>${plat.description}</p>
 	</c:forEach>
-		
+	
+	<div>
+		<form action="inscription" method="GET">	
+			<input type="submit" value="Inscrivez-vous pour réserver">
+		</form>
+	</div>
+	<div>
+		<a href="connexion">Vous avez déjà un compte</a>
+	</div>
+	<div>
+		<form action="restaurant" method="GET">
+			<input type="hidden" name="index" value="${restaurant.id }">	
+			<input type="submit" value="Retour au détail du restaurant">
+		</form>
+ 	</div>
+	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

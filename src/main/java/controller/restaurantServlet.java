@@ -33,7 +33,7 @@ public class restaurantServlet extends HttpServlet {
 		
 		request.setAttribute("restaurant", restaurant);
 		request.setAttribute("carte", carte);
-		
+
 		request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp").forward(request, response);
 	}
 
