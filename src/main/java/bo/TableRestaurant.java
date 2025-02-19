@@ -2,6 +2,7 @@ package bo;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,11 @@ import javax.persistence.Table;
 public class TableRestaurant {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name="nb_places")
 	private int nbPlaces;
+	
+	@Column(name="numero_table")
 	private int numeroTable;
 	
 	@OneToMany
