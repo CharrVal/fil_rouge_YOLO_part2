@@ -12,7 +12,7 @@ public class PlatDAO implements DAO<Plat> {
 	private EntityManagerFactory emf;
 	
 	public PlatDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override

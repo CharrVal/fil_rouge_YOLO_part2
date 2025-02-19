@@ -12,13 +12,13 @@ public class HoraireDAO implements DAO<Horaire>  {
 	private EntityManagerFactory emf;
 	
 	public HoraireDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override
 	public List<Horaire> select() {
 		EntityManager em = emf.createEntityManager();
-		List<Horaire> resultat = em.createQuery("from Carte", Horaire.class).getResultList();
+		List<Horaire> resultat = em.createQuery("from Horaire", Horaire.class).getResultList();
 		em.close();
 		return resultat;
 	}

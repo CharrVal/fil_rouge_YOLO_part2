@@ -12,7 +12,7 @@ public class ReservationDAO implements DAO<Reservation> {
 	private EntityManagerFactory emf;
 	
 	public ReservationDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override
