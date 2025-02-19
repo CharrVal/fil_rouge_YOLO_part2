@@ -12,7 +12,7 @@ public class TableRestaurantDAO implements DAO<TableRestaurant> {
 	private EntityManagerFactory emf;
 	
 	public TableRestaurantDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override

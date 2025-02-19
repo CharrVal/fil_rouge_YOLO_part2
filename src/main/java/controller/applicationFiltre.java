@@ -39,7 +39,11 @@ import bo.Utilisateur;
 	        		|| url.startsWith("/images/")
 	        		|| url.startsWith("/profil")
 	        		|| url.startsWith("/js/") 
-	        		|| url.equals("/listeRestaurants")) {
+	        		|| url.equals("/listeRestaurants")
+	        		|| url.equals("/restaurant")
+	        		|| url.equals("/restaurant?index=1")
+	        		|| url.equals("/carte")
+	        		) {
 	            chain.doFilter(httpRequest, httpResponse);
 	            return;
 	        }

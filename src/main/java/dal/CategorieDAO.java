@@ -12,7 +12,7 @@ public class CategorieDAO implements DAO<Categorie> {
 	private EntityManagerFactory emf;
 	
 	public CategorieDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override

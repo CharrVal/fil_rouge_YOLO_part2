@@ -12,7 +12,7 @@ public class CarteDAO implements DAO<Carte> {
 	private EntityManagerFactory emf;
 	
 	public CarteDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override

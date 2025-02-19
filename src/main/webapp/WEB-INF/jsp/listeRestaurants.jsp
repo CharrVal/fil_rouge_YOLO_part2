@@ -30,7 +30,7 @@
 				<tbody>
 					<tr>
 						<td><p>Restaurant n° ${restaurant.id }</p></td>
-						<td>${restaurant.nom }</td>		
+						<td><a href="restaurant?index=${restaurant.id }">${restaurant.nom } </a></td>		
 						<td>
 							<div class="button-group">
 								<form action="listeRestaurants" method="GET">
