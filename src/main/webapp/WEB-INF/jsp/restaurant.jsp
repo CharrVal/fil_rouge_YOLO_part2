@@ -35,12 +35,12 @@
 	</div>
 		<div>
 			<form action="carte" method="GET">
-				<input type="hidden" name="id" value="${Carte.id }">	
+				<input type="hidden" name="id" value="${carte.id}">
 				<input type="submit" value="Voir la carte">
 			</form>
 			
 			<form action="listeRestaurants" method="GET">
-				<input type="hidden" name="id" value="${restaurant.id }">	
+				<input type="hidden" name="id" value="${restaurant.id}">	
 				<input type="submit" value="Retour à la liste de restaurants">
 			</form>
  		</div>
