@@ -1,0 +1,70 @@
+
+body {
+	background-color: rgb(230, 223, 208);
+}
+
+.rotateleft {
+	rotate: -5deg;
+}
+
+.rotateright {
+	rotate: 5deg;
+}
+
+@media (min-width: 992px) {
+  .container, .container-lg, .container-md, .container-sm {
+    max-width: 720px;
+  }
+}
+
+.jumbotron {
+	overflow: hidden;
+	min-height: 300px;
+	height: 40vw;
+	padding-top: 8vw;
+	background-image: url('../images/jumbotron-bg.jpg');
+  	background-color: #000000;
+  	background-size: cover;
+  	background-position: center bottom;
+}
+
+.jumbospacer {
+	min-height: 90px;
+	height: 10vw;
+  }
+
+.card-img-top-smaller {
+	object-fit: cover;
+	object-position: bottom;
+	height: 280px;
+  }
+
+.logo-yolo {
+	font-size: 24px;
+	width: 36px;
+	height: 36px;
+	background: rgb(25,135,84);
+	background: linear-gradient(90deg, rgba(25,135,84,1) 49%, rgba(177,0,0,1) 50%);
+	color: white;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.user-icon {
+	font-size: 1.5rem;
+	color: #000000;
+	margin-right: 5px;
+}
+
+footer {
+	background: none !important;
+	background-color: none !important;
+    border: none !important;
+	border-top: 3px dotted #000000 !important;
+	border-top-width: 3px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px; */
+}
