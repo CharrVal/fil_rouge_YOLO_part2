@@ -34,7 +34,8 @@ import bo.Utilisateur;
 	        if (url.equals("/connexion") 
 	        		|| url.equals("/accueil") 
 	        		|| url.startsWith("/css/") 
-	        		|| url.startsWith("/images/") 
+	        		|| url.startsWith("/images/")
+	        		|| url.startsWith("/profil")
 	        		|| url.startsWith("/js/") 
 	        		|| url.equals("/listeRestaurants")) {
 	            chain.doFilter(httpRequest, httpResponse);

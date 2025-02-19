@@ -11,7 +11,7 @@
     <!-- Icônes FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="styleProfil.css">
+    <link rel="stylesheet" href="css/styleProfil.css">
 </head>
 <body>
 
@@ -29,22 +29,30 @@
 
     <!-- PROFIL -->
     <div class="text-center">
-        <h2 class="profile-header">Abdel</h2>
+        <h2 class="profile-header">Bonjour ${utilisateur.prenom }</h2>
         <h4 class="mt-3">Informations de profil</h4>
         <hr>
         <div class="profile-info">
-            <p><strong>Nom :</strong> Redouane</p>
-            <p><strong>Prénom :</strong> Abdel</p>
-            <p><strong>Login :</strong> velo4ever</p>
-            <p><strong>Email :</strong> abdelredouane@gmail.com</p>
-            <p><strong>Téléphone :</strong> 06 39 38 76 78</p>
+            <p><strong>Nom :</strong> ${utilisateur.nom }</p>
+            <p><strong>Prénom :</strong> ${utilisateur.prenom}</p>
+            <p><strong>Login :</strong> ${utilisateur.login}</p>
+            <p><strong>Email :</strong> ${utilisateur.email}</p>
+            <p><strong>Téléphone :</strong> ${utilisateur.telephone}</p> 
         </div>
 
         <div class="d-grid gap-2 mt-4">
-            <button class="btn btn-secondary btn-block">Déconnexion</button>
-            <button class="btn btn-primary btn-block">Modifier</button>
-            <button class="btn btn-danger btn-block">Supprimer</button>
-        </div>
+			<form action="/deconnexion" method="POST">
+    			<button type="submit" class="btn btn-secondary btn-block">Déconnexion</button>
+			</form>
+			<form action="/modifier" method="POST">
+    			<input type="hidden" name="idUtilisateur" value="<c:out value='${iutilisateur.id}'/>">
+    			<button type="submit" class="btn btn-secondary btn-block">Modifier</button>
+			</form>
+			<form action="/supprimer" method="POST">
+    			<input type="hidden" name="idUtilisateur" value="<c:out value='${iutilisateur.id}'/>">
+    			<button type="submit" class="btn btn-secondary btn-block">Déconnexion</button>
+			</form>
+		</div>
     </div>
 
     <!-- FOOTER -->
