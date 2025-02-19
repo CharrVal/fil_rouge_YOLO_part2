@@ -21,12 +21,31 @@
 	  <div class="container">
 	    <div class="row align-items-start">
 	      <div class="col-12">
-	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">Bienvenue chez<br>Pizza&nbsp;YOLO</h1>
-	        <a class="btn btn-success btn-lg rounded-pill" href="listeRestaurants" role="button">Nos restaurants</a>
+	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">Titre sur<br>une image</h1>
+	        <a class="btn btn-success btn-lg rounded-pill" href="listeRestaurants" role="button">Bouton</a>
 	      </div>
 	    </div>
 	  </div>
 	</div>
+	
+	<div class="container d-flex justify-content-start mt-5">
+	    <h1 class="display-4 fw-bold lh-1 pb-3">Titre seul</h1>		
+	</div>
+	
+	
+	
+	<!-- Pour coller un compostant depuis
+	https://getbootstrap.com/docs/5.3/components/
+	coller le code du composant à l'intérieur du container suivant : -->
+	
+	<div class="container d-flex justify-content-center mt-5">
+		<!-- code du composant ici-->	
+	</div>
+	
+	<!-- Puis ajouter les classes de styles au composant, par exemple :
+	border-0 rounded-0 bg-transparent -->
+	
+	
 	
 	<div class="container d-flex justify-content-center mt-5">
 		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
