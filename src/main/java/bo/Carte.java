@@ -7,7 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity @Table(name="cartes")
@@ -17,8 +18,12 @@ public class Carte {
 	private String nom;
 	private String description;
 	
-	@OneToMany
-	@JoinColumn(name="id_cartes")
+	@ManyToMany
+	@JoinTable(
+			name="asso_cartes_plats",
+			joinColumns= {@JoinColumn(name="id_cartes")},
+			inverseJoinColumns= {@JoinColumn(name="id_plats")}
+	)
 	private List<Plat> plats;
 	
 	public Carte(int id, String nom, String description, List<Plat> plats) {

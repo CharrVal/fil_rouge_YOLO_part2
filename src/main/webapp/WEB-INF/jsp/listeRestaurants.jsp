@@ -13,51 +13,22 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/fragments/header.jsp">
-    	<jsp:param name="title" value="${pageTitle}"/>
-	</jsp:include>
+<%@ include file="/WEB-INF/fragments/header.jspf" %>
 	
-<c:forEach var="restaurant" items="${listeRestaurants }">
-		<fieldset>
-			<table>
-				<thead>
-					<tr>
-						<th>Numéro du restaurant</th>
-						<th>Nom du restaurant</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><p>Restaurant n° ${restaurant.id }</p></td>
-						<td><a href="restaurant?index=${restaurant.id }">${restaurant.nom } </a></td>		
-						<td>
-							<div class="button-group">
-								<form action="listeRestaurants" method="GET">
-									<input type="hidden" name="id" value="${restaurant.id }">	
-									<input type="submit" value="Afficher les détails">
-								</form>
- 
-								<form action="affichageCarteRestaurant" method="GET">
-									<input type="hidden" name="id" value="${Carte.id }">	
-									<input type="submit" value="Afficher la carte">
-								</form>
- 
-								<form action="reserverTableRestaurant" method="GET">
-									<input type="hidden" name="id" value="${reservation.id }">	
-									<input type="submit" value="Réserver une table">
-								</form>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</fieldset>
+	<c:forEach var="restaurant" items="${listeRestaurants }">
+		<div class="container d-flex justify-content-center mb-5">
+			<div class="card border border-black rounded-0 bg-transparent " style="width: 100%;">
+			  <img src="${restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
+			  <div class="card-body text-center my-3">
+			    <h4 class="card-text pb-2">${restaurant.nom}</h4>
+			    <a href="restaurant?index=${restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
+			    <a href="reservation" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+		  	</div>
+		  	</div>
+		 </div>
 	</c:forEach>
 
-<jsp:include page="/WEB-INF/fragments/footer.jsp">
-    	<jsp:param name="title" value="${pageTitle}"/>
-	</jsp:include>
+<%@ include file="/WEB-INF/fragments/footer.jspf" %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
