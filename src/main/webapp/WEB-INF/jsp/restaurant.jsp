@@ -52,8 +52,6 @@
 				<input type="submit" value="Retour à la liste de restaurants">
 			</form>
  		</div>
-
-
  	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
 	
