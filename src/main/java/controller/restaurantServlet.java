@@ -15,22 +15,25 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/restaurant")
 public class restaurantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private RestaurantBLL restaurantBll;
-	private CarteBLL carteBll;
+	private RestaurantBLL restaurantbll;
+	private CarteBLL cartebll;
     
 	@Override
 	public void init() throws ServletException {
-		restaurantBll = new RestaurantBLL();
-		carteBll = new CarteBLL();
+		restaurantbll = new RestaurantBLL();
+		cartebll = new CarteBLL();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idParam = request.getParameter("index");
 		int id = Integer.parseInt(idParam);
-		Restaurant restaurant = restaurantBll.selectById(id);
-		Carte carte = carteBll.selectById(id);
+		
+		Restaurant restaurant = restaurantbll.selectById(id);
+		Carte carte = cartebll.selectById(id);
+		
 		request.setAttribute("restaurant", restaurant);
 		request.setAttribute("carte", carte);
+
 		request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp").forward(request, response);
 	}
 
