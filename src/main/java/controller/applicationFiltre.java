@@ -30,9 +30,11 @@ import bo.Utilisateur;
 
 	        String url = httpRequest.getServletPath();
 	        
-	        //Tout ce qui se trouve après .css sera à enlever quand l'application fonctionnera correctement !!
 	        if (url.equals("/connexion") 
 	        		|| url.equals("/accueil") 
+	        		|| url.equals("/inscription") 
+	        		|| url.equals("/profil") // à supprimer quand on aura la session
+	        		|| url.equals("/_template.jsp") // à supprimer quand on aura la session
 	        		|| url.startsWith("/css/") 
 	        		|| url.startsWith("/images/")
 	        		|| url.startsWith("/profil")
