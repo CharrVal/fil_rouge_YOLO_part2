@@ -34,6 +34,7 @@ import bo.Utilisateur;
 	        		|| url.equals("/accueil") 
 	        		|| url.equals("/inscription") 
 	        		|| url.equals("/profil") // à supprimer quand on aura la session
+	        		|| url.equals("/_template.jsp") // à supprimer quand on aura la session
 	        		|| url.startsWith("/css/") 
 	        		|| url.startsWith("/images/") 
 	        		|| url.startsWith("/js/") 
