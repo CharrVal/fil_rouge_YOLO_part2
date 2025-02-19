@@ -1,6 +1,6 @@
 package bo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,17 +13,17 @@ public class Horaire {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String jour;
-	private LocalDate ouverture;
-	private LocalDate fermeture;
+	private LocalDateTime ouverture;
+	private LocalDateTime fermeture;
 	
-	public Horaire(int id, String jour, LocalDate ouverture, LocalDate fermeture) {
+	public Horaire(int id, String jour, LocalDateTime ouverture, LocalDateTime fermeture) {
 		this.id = id;
 		this.jour = jour;
 		this.ouverture = ouverture;
 		this.fermeture = fermeture;
 	}
 	
-	public Horaire( String jour, LocalDate ouverture, LocalDate fermeture) {
+	public Horaire( String jour, LocalDateTime ouverture, LocalDateTime fermeture) {
 		this.jour = jour;
 		this.ouverture = ouverture;
 		this.fermeture = fermeture;
@@ -47,19 +47,19 @@ public class Horaire {
 		this.jour = jour;
 	}
 
-	public LocalDate getOuverture() {
+	public LocalDateTime getOuverture() {
 		return ouverture;
 	}
 
-	public void setOuverture(LocalDate ouverture) {
+	public void setOuverture(LocalDateTime ouverture) {
 		this.ouverture = ouverture;
 	}
 
-	public LocalDate getFermeture() {
+	public LocalDateTime getFermeture() {
 		return fermeture;
 	}
 
-	public void setFermeture(LocalDate fermeture) {
+	public void setFermeture(LocalDateTime fermeture) {
 		this.fermeture = fermeture;
 	}	
 }

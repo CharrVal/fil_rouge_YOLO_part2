@@ -7,14 +7,9 @@ import bo.Restaurant;
 import dal.RestaurantDAO;
 
 public class RestaurantBLL {
-	private RestaurantDAO dao;
-		
-//		public RestaurantBLL() {
-//			dao = new RestaurantDAO();
-//		}
+	private RestaurantDAO dao = new RestaurantDAO();
 		
 		public List<Restaurant> select() {
-			dao = new RestaurantDAO();
 			return dao.select();
 		}
 		

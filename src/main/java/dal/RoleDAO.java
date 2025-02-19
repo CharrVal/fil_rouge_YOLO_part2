@@ -12,7 +12,7 @@ public class RoleDAO implements DAO<Role> {
 	private EntityManagerFactory emf;
 	
 	public RoleDAO() {
-		emf = Persistence.createEntityManagerFactory("user");
+		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
 	
 	@Override
