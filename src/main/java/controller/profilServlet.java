@@ -19,16 +19,18 @@ public class profilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          
 		
-		//HttpSession session = request.getSession(false);
-		//if(session !=null) {
-			//Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+		/*HttpSession session = request.getSession(false);
+		if(session !=null) {
+			Utilisateur utilisateur = (Utilisateur)session.getAttribute("utilisateur");
 
-				//int id = utilisateur.getId();
-				UtilisateurBLL bll= new UtilisateurBLL();
-				request.setAttribute("utilisateur",bll.selectById(1));
-		//}
+				request.setAttribute("utilisateur", utilisateur);*/
+		System.out.println("dans le servlet modifier*****************************************************************************************\n******************\n++++++++++");
 
-		request.getRequestDispatcher("/WEB-INF/jsp/profil.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/jsp/afficherProfil.jsp").forward(request, response);
+       /* }else {
+        	response.sendRedirect("connexion");
+		}*/
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

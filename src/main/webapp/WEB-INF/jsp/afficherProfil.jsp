@@ -33,24 +33,24 @@
         	<h4 class="mt-3">Informations de profil</h4>
         	<hr>
         	<div class="profile-info">
-            	<p><strong>Nom :</strong> ${utilisateur.nom }</p>
-            	<p><strong>Prénom :</strong> ${utilisateur.prenom}</p>
-            	<p><strong>Login :</strong> ${utilisateur.login}</p>
+            	<p><strong>Nom :</strong> ${sessionScope.utilisateur.nom }</p>
+            	<p><strong>Prénom :</strong> ${sessionScope.utilisateur.prenom}</p>
+            	<p><strong>Login :</strong> ${sessionScope.utilisateur.login}</p>
             	<p><strong>Email :</strong> ${utilisateur.email}</p>
-            	<p><strong>Téléphone :</strong> ${utilisateur.telephone}</p> 
+            	<p><strong>Téléphone :</strong> ${sessionScope.utilisateur.telephone}</p> 
        	 	</div>
 
         	<div class="d-grid gap-2 mt-4">
 				<form action="/deconnexion" method="POST">
     				<button type="submit" class="btn btn-secondary btn-block">Déconnexion</button>
 				</form>
-				<form action="/modifier" method="POST">
-    				<input type="hidden" name="idUtilisateur" value="<c:out value='${iutilisateur.id}'/>">
+				<form action="modifier" method="get">
+    				<input type="hidden" name="modUtilisateur" />
     				<button type="submit" class="btn btn-secondary btn-block">Modifier</button>
 				</form>
-				<form action="/supprimer" method="POST">
-    				<input type="hidden" name="idUtilisateur" value="<c:out value='${iutilisateur.id}'/>">
-    				<button type="submit" class="btn btn-secondary btn-block">Déconnexion</button>
+				<form action="supprimer" method="POST">
+    				<input type="hidden" name="idUtilisateur" />
+    				<button type="submit" class="btn btn-secondary btn-block">Supprimer</button>
 				</form>
 			</div>
 		</div>
