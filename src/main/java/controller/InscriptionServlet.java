@@ -2,8 +2,11 @@ package controller;
 
 import java.io.IOException;
 
+import javax.naming.NamingException;
+
 import Exception.UtilisateurException;
 import bll.UtilisateurBLL;
+import bo.Role;
 import bo.Utilisateur;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,7 +29,7 @@ public class inscriptionServlet extends HttpServlet {
 		String login = request.getParameter("login");
 		String mdp = request.getParameter("mdp");
 		String mdp2 = request.getParameter("mdp2");
-		String email = request.getParameter("Email");
+		String email = request.getParameter("email");
 		String tel = request.getParameter("telephone");
 		
 		if ((nom == null || nom.isEmpty() || 
@@ -55,14 +58,17 @@ public class inscriptionServlet extends HttpServlet {
 	        utilisateur.setEmail(email);
 	        utilisateur.setLogin(login);
 	        utilisateur.setPassword(mdp);
-	        utilisateur.getRole().setId(3); // Id 3 pour les visiteurs/clients par défaut.
+	        
+	        Role role = new Role();
+	        role.setId(3);
+	        utilisateur.setRole(role);
 
 	        utilisateurbll.insert(utilisateur);
-
+	        
 	        response.sendRedirect("connexion");
-	    } catch (UtilisateurException e) {
+	    } catch (UtilisateurException | NamingException e) {
 	        e.printStackTrace();
-	        request.setAttribute("error", "Erreur lors de l'inscription. Essayez à nouveau.");
+	        request.setAttribute("error", "Erreur lors de l'inscription : " + e.getMessage());
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
 	    }
 	}	
