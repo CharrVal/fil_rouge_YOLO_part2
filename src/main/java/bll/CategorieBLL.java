@@ -7,11 +7,7 @@ import bo.Categorie;
 import dal.CategorieDAO;
 
 public class CategorieBLL {
-	private CategorieDAO dao;
-	
-	public CategorieBLL() {
-		dao = new CategorieDAO();
-	}
+	private CategorieDAO dao = new CategorieDAO();
 	
 	public List<Categorie> select() {
 		return dao.select();

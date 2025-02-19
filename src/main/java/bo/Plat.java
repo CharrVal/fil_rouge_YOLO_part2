@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity @Table(name="plats")
@@ -16,7 +16,7 @@ public class Plat {
 	private double prix;
 	private String description;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="id_categories")
 	private Categorie categorie;
 

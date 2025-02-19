@@ -7,11 +7,7 @@ import bo.Plat;
 import dal.PlatDAO;
 
 public class PlatBLL {
-	private PlatDAO dao;
-	
-	public PlatBLL() {
-		dao = new PlatDAO();
-	}
+	private PlatDAO dao = new PlatDAO();
 	
 	public List<Plat> select() {
 		return dao.select();
