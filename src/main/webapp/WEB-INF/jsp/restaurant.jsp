@@ -15,18 +15,29 @@
 <body>
 
 	<%@ include file="/WEB-INF/fragments/header.jspf" %>
-	
-	<h1>${restaurant.nom}</h1>
-		<div>
-			<form action="inscription" method="GET">	
-				<input type="submit" value="Inscrivez-vous pour réserver">
-			</form>
-		</div>
-		<div>
-			<a href="connexion">Vous avez déjà un compte</a>
-		</div>
 		
-	<div>
+	 <div class="jumbotron px-2">
+	  <div class="container">
+	    <div class="row align-items-start">
+	      <div class="col-12">
+	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">${restaurant.nom}</h1>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="container d-flex justify-content-center mt-5">
+		<a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Inscrivez-vous pour réserver</a>
+	</div>
+	<div class="container d-flex justify-content-center mb-5">
+		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+			<div class="card-body text-center">
+				<a href="connexion" class="card-text">Vous avez déjà un compte</a>
+			</div>
+		</div>
+	</div>
+		
+	<div class="text-center my-5">
 		<h2>Nos horaires</h2>
 			<c:forEach items="${restaurant.horaires}" var="horaire" varStatus="status">
 					<div>
@@ -41,15 +52,16 @@
 			</c:forEach>
 	</div>
 	
-		<div>
+		<div class="card-body text-center my-3">
 			<form action="carte" method="GET">
 				<input type="hidden" name="id" value="${carte.id}">
-				<input type="submit" value="Voir la carte">
+				<input  type="submit" value="Voir la carte" class="btn btn-outline-dark rounded-pill">
 			</form>
-
+		</div>
+		<div class="card-body text-center my-3">
 			<form action="listeRestaurants" method="GET">
 				<input type="hidden" name="id" value="${restaurant.id}">	
-				<input type="submit" value="Retour à la liste de restaurants">
+				<input type="submit" value="Retour à la liste de restaurants" class="btn btn-outline-dark rounded-pill">
 			</form>
  		</div>
  	
