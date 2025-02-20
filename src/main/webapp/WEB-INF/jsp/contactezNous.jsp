@@ -20,7 +20,6 @@
 
 		<%@ include file="/WEB-INF/fragments/header.jspf" %>
 		
-	
 	<div class="jumbotron-resto px-2" style="background-image: url('${restaurant.url_image}')">
 	  <div class="container">
 	    <div class="row align-items-start">
@@ -32,17 +31,24 @@
 	</div>	
 	
 	<div class="container d-flex justify-content-center mt-5">
-	        <h2 class="display-4 fw-bold lh-1 pb-3">Réservation reçue</h2>
+	        <h2 class="display-4 fw-bold lh-1 pb-3">Contactez Nous</h2>
 	</div>
-	
-	<div class="container d-flex justify-content-center mt-5">
-		<p>Merci pour votre réservation !</p>
+	<div class="container d-flex justify-content-start mt-3 px-5 px-sm-2">
+		<form class="row g-3" action="contactezNous" method="POST">
+			<div class="col-md-12">
+				<label class="form-label" for="titre">Titre :</label>
+				<input class="form-control" type="text" name="titre" id="titre" required>
+			</div>
+			<div class="col-md-12">
+				<label class="form-label" for="message">Votre message :</label>
+				<textarea class="form-control" id="message" name="message" rows="5" cols="30" required></textarea>
+			</div>
+			<div class="col-12 pt-3">
+				<input class="w-100 btn btn-success btn-lg rounded-pill" type="submit" value="Envoyer mon message">
+			</div>
+		</form>
 	</div>
-	
-	<div class="container d-flex justify-content-center mt-2">
-		<p>Vous recevrez un email de confirmation quand notre équipe aura validé votre réservation.</p>
-	</div>
-	
+
 		<div class="card-body text-center my-3">
 			<form action="listeRestaurants" method="GET">
 				<input type="hidden" name="id" value="${restaurant.id}">	

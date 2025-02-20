@@ -16,7 +16,7 @@
 
 	<%@ include file="/WEB-INF/fragments/header.jspf" %>
   	
-  	<div class="jumbotron px-2">
+  	<div class="jumbotron-resto px-2" style="background-image: url('${restaurant.url_image}')">
 	  <div class="container">
 	    <div class="row align-items-start">
 	      <div class="col-12">
@@ -58,10 +58,7 @@
 	</div>
 	
 		<div class="card-body text-center my-3">
-			<form action="reservation" method="GET">
-				<input type="hidden" name="id" value="${reservation.id}">
-				<input  type="submit" value="Réservez" class="btn btn-outline-dark rounded-pill">
-			</form>
+			<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
 		</div>
 		<div class="card-body text-center my-3">
 			<form action="listeRestaurants" method="GET">
