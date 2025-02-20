@@ -34,7 +34,7 @@
 		<h2 class="display-4 fw-bold lh-1 pb-3">Connectez-vous</h2>
 	</div>	
 
-	<div class="container d-flex justify-content-start mt-3 px-5 px-sm-2">
+	<div class="container d-flex justify-content-center mt-5">
 		<form class="row g-3" action="connexion" method="post">
 			<div class="col-md-12">
 				<label class="form-label" for="login">Veuillez saisir votre identifiant :</label>
@@ -44,23 +44,21 @@
 				<label class="form-label" for="password">Veuillez saisir votre mot de passe :</label>
 				<input class="form-control" type="password" name="password" id="password" placeholder="Votre mot de passe" required>
 			</div>
-			<div class="col-12 pt-3">
+			<div class="col-12 pt-3 text-center">
 				<button type="submit" class="w-100 btn btn-success btn-lg rounded-pill">Se connecter</button>
 			</div>
 		</form>
 	</div>
 	
 	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
-		  <div class="card-body text-center">
-		    <p class="card-text">Vous n'avez pas de compte ?</p>
+		<div class="col-md-12 mt-3 text-center">
+		    <p>Vous n'avez pas de compte ?</p>
 		    <a href="inscription" class="btn btn-outline-dark rounded-pill">Inscrivez-vous</a>
-		  </div>
-		</div>
+		 </div>
 	</div>
-	
+
 	<div class="container d-flex justify-content-center mb-5">
-		<p class="card-text">${message }</p>
+		<p >${message }</p>
 	</div>
 	
 <%@ include file="/WEB-INF/fragments/footer.jspf" %>
