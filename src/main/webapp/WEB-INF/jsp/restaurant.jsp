@@ -42,11 +42,18 @@
 			<c:forEach items="${restaurant.horaires}" var="horaire" varStatus="status">
 					<div>
 						<p>${horaire.jour} :
+						<c:if test="${horaire.ouverture == null && horaire.fermeture == null}">
+						fermé
+						</c:if>
+						<c:if test="${horaire.ouverture != null}">
 						<fmt:parseDate value="${horaire.ouverture}" pattern="yyyy-MM-dd'T'HH:mm" var="ouvertureDate" type="both" />
 						<fmt:formatDate value="${ouvertureDate}" pattern="HH:mm" />
 						-
+						</c:if>
+						<c:if test="${horaire.fermeture != null}">
 						<fmt:parseDate value="${horaire.fermeture}" pattern="yyyy-MM-dd'T'HH:mm" var="fermetureDate" type="both" />
 						<fmt:formatDate value="${fermetureDate}" pattern="HH:mm" />
+						</c:if>
 						</p>
 					</div>
 			</c:forEach>

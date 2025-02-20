@@ -22,6 +22,7 @@ public class Reservation {
 	@Column(name = "statut")
 	private String statut;
  
+
 	@Column(name = "horaire_reservation")
 	private LocalDateTime horaireReservation;
 		
@@ -60,7 +61,7 @@ public class Reservation {
 		this.id = id;
 	}
 	
- 
+
 	public int getNbPersonne() {
 		return nbPersonne;
 	}
@@ -81,6 +82,7 @@ public class Reservation {
 		return horaireReservation;
 	}
  
+
 	public void setHoraireReservation(LocalDateTime dateTimeReservation) {
 		this.horaireReservation = dateTimeReservation;
 	}	
@@ -100,3 +102,4 @@ public class Reservation {
 		this.restaurant = restaurant;
 	}
 }
+

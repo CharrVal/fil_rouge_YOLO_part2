@@ -32,10 +32,16 @@ public class profilModifServlet extends HttpServlet {
 		} else {
 			Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 			try {
-				Utilisateur util = new Utilisateur(utilisateur.getId(), request.getParameter("inputNom"),
-						request.getParameter("inputPrenom"), request.getParameter("inputTel"),
-						request.getParameter("inputEmail"), request.getParameter("inputLogin"),
-						request.getParameter("inputMp"), utilisateur.getRole(), utilisateur.getReservations());
+				Utilisateur util = new Utilisateur();
+				util.setId(utilisateur.getId());
+				util.setNom(request.getParameter("inputNom"));
+				util.setPrenom(request.getParameter("inputPrenom"));
+				util.setTelephone(request.getParameter("inputTel"));
+				util.setEmail(request.getParameter("inputEmail"));
+				util.setLogin(request.getParameter("inputLogin"));
+				util.setPassword(request.getParameter("inputMp"));
+				util.setRole(utilisateur.getRole());
+				util.setReservations(utilisateur.getReservations());
 				bll.update(util);
 				session.setAttribute("utilisateur", util);
 			} catch (UtilisateurException e) {

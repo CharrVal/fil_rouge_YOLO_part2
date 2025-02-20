@@ -28,17 +28,17 @@ public class Restaurant {
 	@JoinColumn(name="id_restaurants")
 	private List<TableRestaurant> tablesRestaurant;
 	
-	@OneToMany
-	@JoinColumn(name="id_restaurants")
-	private List<Reservation> reservations;
+
 	
 	
 	@OneToMany
 	@JoinColumn(name="id_restaurants")
 	private List<Horaire> horaires;
 
-	public Restaurant(int id, String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
-			 List<Horaire> horaires) {
+
+
+	public Restaurant(int id, String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant,
+			List<Horaire> horaires) {
 		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -46,19 +46,17 @@ public class Restaurant {
 		this.url_image = url_image;
 		this.carte = carte;
 		this.tablesRestaurant = tablesRestaurant;
-		this.reservations = reservations;
 		this.horaires = horaires;
 	}
 	
-	public Restaurant(String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
-			List<Utilisateur> utilisateurs, List<Horaire> horaires) {
+	public Restaurant(String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant,
+			List<Horaire> horaires) {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.email = email;
 		this.url_image = url_image;
 		this.carte = carte;
 		this.tablesRestaurant = tablesRestaurant;
-		this.reservations = reservations;
 		this.horaires = horaires;
 	}
 	
@@ -127,15 +125,6 @@ public class Restaurant {
 	public void setTablesRestaurant(List<TableRestaurant> tablesRestaurant) {
 		this.tablesRestaurant = tablesRestaurant;
 	}
-
-	public List<Reservation> getReservations() {
-		return reservations;
-	}
-
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
-	}
-
 
 	public List<Horaire> getHoraires() {
 		return horaires;
