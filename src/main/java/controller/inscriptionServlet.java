@@ -66,10 +66,15 @@ public class inscriptionServlet extends HttpServlet {
 	        utilisateurbll.insert(utilisateur);
 	        
 	        response.sendRedirect("connexion");
-	    } catch (UtilisateurException | NamingException e) {
+	    } catch (UtilisateurException e) {
 	        e.printStackTrace();
-	        request.setAttribute("error", "Erreur lors de l'inscription : " + e.getMessage());
+	        request.setAttribute("error",  e.getErreurs());
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
-	    }
+		} catch (NamingException e) {
+			e.printStackTrace();
+			request.setAttribute("error", "Une erreur est survenue. Veuillez réessayer.");
+			request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
+		}
+	    
 	}	
 }
