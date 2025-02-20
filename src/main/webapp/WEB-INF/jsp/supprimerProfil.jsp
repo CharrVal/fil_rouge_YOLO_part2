@@ -19,45 +19,41 @@
 <body>
 
 	<%@ include file="/WEB-INF/fragments/header.jspf"%>
-
-	<div class="jumbotron px-2">
-		<div class="container">
-			<div class="row align-items-start">
-				<div class="col-12">
-					<h1 class="display-4 fw-bold lh-1 text-white pb-3">
-						Titre sur<br>une image
-					</h1>
-
-				</div>
-			</div>
-		</div>
+        		
+	<div class="container d-flex justify-content-center mt-5">
+	     <h2 class="display-4 fw-bold lh-1 pb-3">Supprimez votre profil</h2>
 	</div>
-
-
-
-
-
+	
 	<div class="card text-center mb-3" style="width: 18rem; margin: auto;">
-		<div class="card-body">
+		<div class="card-body" style="color: #B10000; border: 2px solid #B10000; padding: 5px;">
 			<h5 class="card-title">Attention</h5>
 			<p class="card-text">Voulez-vous vraiment supprimer votre compte?</p>
+		</div>
+	</div>
+	
+	<div class="container d-flex justify-content-center">
+		<div class="col-md-12 mt-3 text-center">
 			<form action="supprimer" method="post">
-				<button type="submit" class="btn btn-primary btn-sm ">Oui</button>
+				<button type="submit" class="btn btn-outline-dark rounded-pill">Confirmer la suppression</button>
 			</form>
 		</div>
 	</div>
-
-
-
-
-
-
+	
+	<div class="container d-flex justify-content-center mb-2">
+		<div class="col-md-12 mt-3 text-center">
+			<form action="profil" method="get">
+				<button type="submit" class="btn btn-success rounded-pill px-4 mx-2">Retour à votre profil</button>
+			</form>
+		</div>
+	</div>
+	
 	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous">
+	</script>
 </body>
 </html>
 
