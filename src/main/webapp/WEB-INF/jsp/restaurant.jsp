@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,12 +20,19 @@
 	 <div class="jumbotron px-2">
 	  <div class="container">
 	    <div class="row align-items-start">
-	      <div class="col-12">
+	      <div class="col-10">
 	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">${restaurant.nom}</h1>
+	      </div>
+	      <div class="col-2 text-end">
+	        <a href="ajouterfavori?idRestaurant=${restaurant.id }">
+	        <c:if test="${utilisateur.restaurant.id == restaurant.id}"><i class="bi bi-star-fill border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
+	        <c:if test="${utilisateur.restaurant.id != restaurant.id}"><i class="bi bi-star border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
+	        </a>
 	      </div>
 	    </div>
 	  </div>
 	</div>
+	
 
 	<div class="container d-flex justify-content-center mt-5">
 		<a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Inscrivez-vous pour réserver</a>
