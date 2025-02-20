@@ -19,10 +19,9 @@
 	
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;databasename=DEMO_YOLO;trustservercertificate=true" />
-			<property name="javax.persistence.jdbc.user" value="Utilisateur1" />
-			<property name="javax.persistence.jdbc.password" value="Utilisateur1" />
-			
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;databasename=YOLO;trustservercertificate=true" />
+			<property name="javax.persistence.jdbc.user" value="regis" />
+			<property name="javax.persistence.jdbc.password" value="regis" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

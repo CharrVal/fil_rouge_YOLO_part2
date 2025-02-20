@@ -39,6 +39,7 @@ import bo.Utilisateur;
 	        		|| url.equals("/listeRestaurants")
 	        		|| url.equals("/restaurant")
 	        		|| url.equals("/carte")
+	        		|| url.equals("/ajouterfavori")
 	        		) {
 	            chain.doFilter(httpRequest, httpResponse);
 	            return;
