@@ -11,6 +11,12 @@
 <body>
 	<h1>${restaurant.nom}</h1>
 		<div>
+			<form action="reservation" method="GET">
+				<input type="hidden" name="idRestaurant" value="${restaurant.id }">
+				<input type="submit" value="Réserver">
+			</form>
+		</div>
+		<div>
 			<form action="inscription" method="GET">	
 				<input type="submit" value="Inscrivez-vous pour réserver">
 			</form>
