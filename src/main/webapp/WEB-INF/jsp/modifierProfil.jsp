@@ -23,7 +23,7 @@
 
 
 
-	<div class="container d-flex justify-content-start mt-5">
+	<div class="shadow-lg p-3 mb-5 bg-body rounded">
 		<form class="row g-3" action="modifier" method="post">
 			<div class="col-md-6">
 				<label for="inputNom" class="form-label">Nom</label> <input
@@ -67,33 +67,37 @@
 
 		</form>
 	</div>
+	<c:if test="${not empty erreur}">
+		<c:forEach items="${erreur}" var="message">
+			<div class="alert alert-danger" role="alert">${message}</div>
+			</c:forEach>
+	</c:if>
 
 
+		<div class="container d-flex justify-content-center mb-5">
+			<div class="card border border-black rounded-0 bg-transparent"
+				style="width: 100%;">
+				<div class="card-header">Votre restaurant favori</div>
+				<img src="images/jumbotron-bg.jpg"
+					class="card-img-top-smaller border-0 rounded-0 max-h-20"
+					alt="Pizza">
 
-
-	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border border-black rounded-0 bg-transparent"
-			style="width: 100%;">
-			<div class="card-header">Votre restaurant favori</div>
-			<img src="images/jumbotron-bg.jpg"
-				class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
-
-			<div class="card-body text-center my-3">
-				<h4 class="card-text pb-2">Pizza YOLO Chambéry</h4>
-				<a href="restaurant" class="btn btn-outline-dark rounded-pill">Accéder
-					à la page</a> <a href="reservation"
-					class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+				<div class="card-body text-center my-3">
+					<h4 class="card-text pb-2">Pizza YOLO Chambéry</h4>
+					<a href="restaurant" class="btn btn-outline-dark rounded-pill">Accéder
+						à la page</a> <a href="reservation"
+						class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
+		<%@ include file="/WEB-INF/fragments/footer.jspf"%>
 
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-		crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"></script>
 </body>
 </html>
 

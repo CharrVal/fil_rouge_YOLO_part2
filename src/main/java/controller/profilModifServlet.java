@@ -30,8 +30,8 @@ public class profilModifServlet extends HttpServlet {
 		if (session == null) {
 			response.sendRedirect("connexion");
 		} else {
-			Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 			try {
+				Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 				Utilisateur util = new Utilisateur();
 				util.setId(utilisateur.getId());
 				util.setNom(request.getParameter("inputNom"));
@@ -44,11 +44,13 @@ public class profilModifServlet extends HttpServlet {
 				util.setReservations(utilisateur.getReservations());
 				bll.update(util);
 				session.setAttribute("utilisateur", util);
-			} catch (UtilisateurException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				response.sendRedirect("profil");
+
+		
+		} catch (UtilisateurException e) {
+				request.setAttribute("erreur", e.getErreurs());
+				request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp").forward(request, response);
 			}
-			response.sendRedirect("profil");
 		}
 	}
 }
