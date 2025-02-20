@@ -57,20 +57,18 @@
 		</div>
 	</div>
 	
-	<div>
-		<form action="inscription" method="GET">	
-			<input type="submit" value="Inscrivez-vous pour réserver">
-		</form>
-	</div>
-	<div>
-		<a href="connexion">Vous avez déjà un compte</a>
-	</div>
-	<div>
-		<form action="restaurant" method="GET">
-			<input type="hidden" name="index" value="${restaurant.id }">	
-			<input type="submit" value="Retour au détail du restaurant">
-		</form>
- 	</div>
+		<div class="card-body text-center my-3">
+			<form action="reservation" method="GET">
+				<input type="hidden" name="id" value="${reservation.id}">
+				<input  type="submit" value="Réservez" class="btn btn-outline-dark rounded-pill">
+			</form>
+		</div>
+		<div class="card-body text-center my-3">
+			<form action="listeRestaurants" method="GET">
+				<input type="hidden" name="id" value="${restaurant.id}">	
+				<input type="submit" value="Retour à la liste de restaurants" class="btn btn-outline-dark rounded-pill">
+			</form>
+ 		</div>
 	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
     
