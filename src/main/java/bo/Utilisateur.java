@@ -12,9 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity @Table(name="utilisateurs")
+@Entity
+@Table(name = "utilisateurs")
 public class Utilisateur {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String prenom;
@@ -22,20 +24,20 @@ public class Utilisateur {
 	private String email;
 	private String login;
 	private String password;
-	
+
 	@OneToOne
-	@JoinColumn(name="id_roles")
+	@JoinColumn(name = "id_roles")
 	private Role role;
-	
-    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
+
+	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Reservation> reservations;
-	
+
 	@OneToOne
-	@JoinColumn(name="id_restaurants")
+	@JoinColumn(name = "id_restaurants")
 	private Restaurant restaurant;
-		
-	public Utilisateur(int id, String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations,
-			Restaurant restaurant) {
+
+	public Utilisateur(int id, String nom, String prenom, String telephone, String email, String login, String password,
+			Role role, List<Reservation> reservations, Restaurant restaurant) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -48,8 +50,8 @@ public class Utilisateur {
 		this.restaurant = restaurant;
 	}
 
-	public Utilisateur(String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations,
-			Restaurant restaurant) {
+	public Utilisateur(String nom, String prenom, String telephone, String email, String login, String password,
+			Role role, List<Reservation> reservations, Restaurant restaurant) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.telephone = telephone;
@@ -61,8 +63,8 @@ public class Utilisateur {
 		this.restaurant = restaurant;
 	}
 
-
-	public Utilisateur() {}
+	public Utilisateur() {
+	}
 
 	public int getId() {
 		return id;
@@ -135,10 +137,11 @@ public class Utilisateur {
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
+
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
-	
+
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
