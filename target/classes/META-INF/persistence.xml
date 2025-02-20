@@ -22,7 +22,6 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;databasename=YOLO;trustservercertificate=true" />
 			<property name="javax.persistence.jdbc.user" value="regis" />
 			<property name="javax.persistence.jdbc.password" value="regis" />
-			
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

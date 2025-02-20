@@ -36,7 +36,7 @@ public class AjouterFavoriServlet extends HttpServlet {
 		
 		//request.setAttribute("index", restaurant.getId());
 		request.getRequestDispatcher("restaurant?index=" + idResto).forward(request, response);
-		
+
 	}
 
 }
