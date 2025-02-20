@@ -55,7 +55,7 @@
 					<span class="fst-italic text-muted">Pour les commandes de plus de 8 personnes, merci de contacter le restaurant.</span>
 				</label>
 				<select name="nbPersonnes" class="form-select">
-				  <option selected>-</option>
+				  <option selected></option>
 				  <option value="1">1</option>
 				  <option value="2">2</option>
 				  <option value="3">3</option>

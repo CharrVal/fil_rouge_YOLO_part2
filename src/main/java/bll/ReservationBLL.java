@@ -43,6 +43,15 @@ public class ReservationBLL {
 		if (reservation.getHoraireReservation().isBefore(LocalDateTime.now())) {
 			exception.ajouterErreur("Impossible d'enregistrer cette réservation, la date est incorrecte ! Veuillez recommencer");
 		}
+		
+		if(reservation.getNbPersonne() < 1 || reservation.getNbPersonne() > 8 ) {
+			exception.ajouterErreur("Impossible d'enregistrer cette réservation, le nombre de personne est incorrect! Veuillez recommencer");
+		}
+		
+		if(reservation.getHoraireReservation() == null) {
+			exception.ajouterErreur("Impossible d'enregistrer cette réservation, la date est incorrecte ! Veuillez recommencer");
+		}
+		
 		/* TENTATIVE DE COMPARAISON DES HORAIRES EN BASE VS LA SAISIE UTILISATEUR
 		Horaire horaire = horairedao.selectById(....); --> Problème avec le SELECT....
 	    if (horaire == null) {
