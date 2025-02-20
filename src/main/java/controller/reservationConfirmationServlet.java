@@ -24,6 +24,7 @@ public class reservationConfirmationServlet extends HttpServlet {
 	private ReservationBLL resaBll = new ReservationBLL();
 	private RestaurantBLL restoBll = new RestaurantBLL();
 	private Utilisateur utilisateur;
+	private ReservationException e = new ReservationException();
 
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,8 +37,15 @@ public class reservationConfirmationServlet extends HttpServlet {
 		Restaurant restaurant = restoBll.selectById(idResto);
 		
 		String nbPersonnesParam = request.getParameter("nbPersonnes");
-		int nbPersonnes = Integer.parseInt(nbPersonnesParam);
-		System.out.println(nbPersonnes);
+		int nbPersonnes = 0;
+		if (nbPersonnesParam == "" || nbPersonnesParam == null) {
+			e.ajouterErreur("Choissiez le nombre de personnes.");
+			
+			
+		} else {
+			nbPersonnes = Integer.parseInt(nbPersonnesParam);			
+		}
+		
 		
 		String dateTimeReservationParam = request.getParameter("dateReservation") + " " + request.getParameter("horaireReservation");;
 		System.out.println(dateTimeReservationParam);
