@@ -27,11 +27,15 @@ public class Utilisateur {
 	private Role role;
 	
 	@OneToMany
-	@JoinColumn(name="id_utilisateur")
+	@JoinColumn(name="id_utilisateurs")
 	private List<Reservation> reservations;
-
+	
+	@OneToOne
+	@JoinColumn(name="id_restaurants")
+	private Restaurant restaurant;
 		
-	public Utilisateur(int id, String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations) {
+	public Utilisateur(int id, String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations,
+			Restaurant restaurant) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -41,9 +45,11 @@ public class Utilisateur {
 		this.password = password;
 		this.role = role;
 		this.reservations = reservations;
+		this.restaurant = restaurant;
 	}
 
-	public Utilisateur(String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations) {
+	public Utilisateur(String nom, String prenom, String telephone, String email, String login, String password, Role role, List<Reservation> reservations,
+			Restaurant restaurant) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.telephone = telephone;
@@ -52,7 +58,9 @@ public class Utilisateur {
 		this.password = password;
 		this.role = role;
 		this.reservations = reservations;
+		this.restaurant = restaurant;
 	}
+
 
 	public Utilisateur() {}
 
@@ -126,5 +134,12 @@ public class Utilisateur {
 
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
+	}
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+	
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 }

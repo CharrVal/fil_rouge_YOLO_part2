@@ -19,16 +19,11 @@
 	
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-<<<<<<< HEAD
 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;databasename=YOLO_BD;trustservercertificate=true" />
 			<property name="javax.persistence.jdbc.user" value="ops-control" />
 			<property name="javax.persistence.jdbc.password" value="951753" />
-=======
 
 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;databasename=YOLO;trustservercertificate=true" />
-			<property name="javax.persistence.jdbc.user" value="maud" />
-			<property name="javax.persistence.jdbc.password" value="maud" />
->>>>>>> a56f55ea5a8b4ae64088309d428073b49da9b673
 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
