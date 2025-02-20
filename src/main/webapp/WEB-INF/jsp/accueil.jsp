@@ -50,20 +50,18 @@
 	</c:if>
 	
 	
-	<c:if test="${not empty utilisateur}">
-	<div class="container d-flex justify-content-center my-5">
-		<div class="card border border-black rounded-0 bg-transparent" style="width: 100%;">
-		<div class="card-header">
-		    Votre restaurant favori
-		  </div>
-			<a href="restaurant?index=${utilisateur.restaurant.id }" class="d-block"><img src="${utilisateur.restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20 w-100" alt="Pizza"></a>		
-		  <div class="card-body text-center my-3">
-		    <h4 class="card-text pb-2">${utilisateur.restaurant.nom}</h4>
-		    <a href="restaurant?index=${utilisateur.restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
-		    <a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
-		  </div>
+	<c:if test="${not empty utilisateur.restaurant}">
+		<div class="container d-flex justify-content-center my-5">
+			<div class="card border border-black rounded-0 bg-transparent" style="width: 100%;">
+				<div class="card-header">Votre restaurant favori</div>
+				<a href="restaurant?index=${utilisateur.restaurant.id }" class="d-block"><img src="${utilisateur.restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20 w-100" alt="Pizza"></a>		
+		  	<div class="card-body text-center my-3">
+		    	<h4 class="card-text pb-2">${utilisateur.restaurant.nom}</h4>
+		    	<a href="restaurant?index=${utilisateur.restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
+		    	<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+			</div>
+			</div>
 		</div>
-	</div>
 	</c:if>
 	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
