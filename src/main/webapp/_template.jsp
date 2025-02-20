@@ -46,7 +46,7 @@
 	border-0 rounded-0 bg-transparent -->
 	
 	<div class="container d-flex justify-content-center mt-5">
-					<div class="accordion border-0 rounded-0 bg-transparent" id="accordionExample">
+			<div class="accordion border-0 rounded-0 bg-transparent" id="accordionExample">
 			  <div class="accordion-item">
 			    <h2 class="accordion-header">
 			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

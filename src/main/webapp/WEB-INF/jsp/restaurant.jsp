@@ -36,6 +36,15 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="container d-flex justify-content-center mt-5">
+		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+		  <div class="card-body text-center">
+		    <h2 class="card-title">Notre adresse</h2>
+		    <p class="card-text">${restaurant.adresse}</p>
+		  </div>
+		</div>
+	</div>
 		
 	<div class="text-center my-5">
 		<h2>Nos horaires</h2>
@@ -43,16 +52,16 @@
 					<div>
 						<p>${horaire.jour} :
 						<c:if test="${horaire.ouverture == null && horaire.fermeture == null}">
-						fermé
+							fermé
 						</c:if>
 						<c:if test="${horaire.ouverture != null}">
-						<fmt:parseDate value="${horaire.ouverture}" pattern="yyyy-MM-dd'T'HH:mm" var="ouvertureDate" type="both" />
-						<fmt:formatDate value="${ouvertureDate}" pattern="HH:mm" />
-						-
+							<fmt:parseDate value="${horaire.ouverture}" pattern="yyyy-MM-dd'T'HH:mm" var="ouvertureDate" type="both" />
+							<fmt:formatDate value="${ouvertureDate}" pattern="HH:mm" />
+							-
 						</c:if>
 						<c:if test="${horaire.fermeture != null}">
-						<fmt:parseDate value="${horaire.fermeture}" pattern="yyyy-MM-dd'T'HH:mm" var="fermetureDate" type="both" />
-						<fmt:formatDate value="${fermetureDate}" pattern="HH:mm" />
+							<fmt:parseDate value="${horaire.fermeture}" pattern="yyyy-MM-dd'T'HH:mm" var="fermetureDate" type="both" />
+							<fmt:formatDate value="${fermetureDate}" pattern="HH:mm" />
 						</c:if>
 						</p>
 					</div>
