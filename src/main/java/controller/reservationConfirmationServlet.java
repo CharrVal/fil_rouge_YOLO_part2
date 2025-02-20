@@ -24,6 +24,7 @@ public class reservationConfirmationServlet extends HttpServlet {
 	private ReservationBLL resaBll = new ReservationBLL();
 	private RestaurantBLL restoBll = new RestaurantBLL();
 	private Utilisateur utilisateur;
+	private ReservationException e = new ReservationException();
 
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,10 +38,9 @@ public class reservationConfirmationServlet extends HttpServlet {
 		
 		String nbPersonnesParam = request.getParameter("nbPersonnes");
 		int nbPersonnes = 0;
-		if (nbPersonnesParam == "") {
-			request.setAttribute("erreurs", "Choissiez le nombre de personnes.");
-			request.setAttribute("restaurant", restaurant);
-			request.getRequestDispatcher("/WEB-INF/jsp/reservation.jsp").forward(request, response);
+		if (nbPersonnesParam == "" || nbPersonnesParam == null) {
+			e.ajouterErreur("Choissiez le nombre de personnes.");
+			
 			
 		} else {
 			nbPersonnes = Integer.parseInt(nbPersonnesParam);			

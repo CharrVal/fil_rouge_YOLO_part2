@@ -44,6 +44,12 @@
 				<label class="form-label" for="password">Veuillez saisir votre mot de passe :</label>
 				<input class="form-control" type="password" name="password" id="password" placeholder="Votre mot de passe" required>
 			</div>
+			<div class="col-md-12 ">
+			  <input class="form-check-input" type="checkbox" name="remember-me" value="on" id="flexCheckDefault">
+			  <label class="form-check-label" for="flexCheckDefault">
+			    Se souvenir de moi
+			  </label>		  
+			</div>
 			<div class="col-12 pt-3">
 				<button type="submit" class="w-100 btn btn-success btn-lg rounded-pill">Se connecter</button>
 			</div>

@@ -22,7 +22,9 @@
 			  <div class="card-body text-center my-3">
 			    <h4 class="card-text pb-2">${restaurant.nom}</h4>
 			    <a href="restaurant?index=${restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
-			    <a href="reservation?idRestaurant=${restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+			    <c:if test="${not empty utilisateur}">
+			    	<a href="reservation?idRestaurant=${restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+			    </c:if>
 		  	</div>
 		  	</div>
 		 </div>

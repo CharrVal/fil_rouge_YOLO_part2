@@ -31,6 +31,8 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 		em.close();
 		return resultat;
 	}
+	
+	
 
 	@Override
 	public void update(Utilisateur utilisateur) {
@@ -117,6 +119,27 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	    }
 
 	    return utilisateur;
+	}
+	
+	public boolean utilisateurValide(Utilisateur utilisateur) {
+	    EntityManager em = emf.createEntityManager();
+	    
+	    try {
+	        Utilisateur existingUtilisateur = selectById(utilisateur.getId());
+
+	        if (existingUtilisateur != null) {
+	            if (existingUtilisateur.getPassword().equals(utilisateur.getPassword())) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    } finally {
+	        em.close();
+	    }
+		
 	}
 
 

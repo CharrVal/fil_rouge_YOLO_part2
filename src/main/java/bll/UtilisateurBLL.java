@@ -1,5 +1,6 @@
 package bll;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.naming.NamingException;
@@ -43,5 +44,10 @@ public class UtilisateurBLL {
 	
 	public Utilisateur connecterUtilisateur(String login, String password) throws NamingException {
 		return dao.connecterUtilisateur(login, password);
+	}
+	
+	public boolean utilisateurValide(Utilisateur utilisateur) throws SQLException {
+		dao = new UtilisateurDAO();
+		return dao.utilisateurValide(utilisateur);	
 	}
 }
