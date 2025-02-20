@@ -88,6 +88,6 @@ public class reservationConfirmationServlet extends HttpServlet {
 		
 		
 		request.setAttribute("restaurant", restaurant);
-		request.getRequestDispatcher("/WEB-INF/jsp/reservation.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/reservationConfirmation.jsp").forward(request, response);
 	}
 }

@@ -27,7 +27,7 @@ public class Utilisateur {
 	private Role role;
 	
 	@OneToMany
-	@JoinColumn(name="id_utilisateur")
+	@JoinColumn(name="id_utilisateurs")
 	private List<Reservation> reservations;
 	
 	@OneToOne
