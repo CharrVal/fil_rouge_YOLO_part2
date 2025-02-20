@@ -32,11 +32,9 @@ import bo.Utilisateur;
 	        
 	        if (url.equals("/connexion") 
 	        		|| url.equals("/accueil") 
-	        		|| url.equals("/inscription") 
-	        		|| url.equals("/profil") // à supprimer quand on aura la session
-	        		|| url.equals("/_template.jsp") // à supprimer quand on aura la session
 	        		|| url.startsWith("/css/") 
-	        		|| url.startsWith("/images/") 
+	        		|| url.startsWith("/images/")
+	        		|| url.startsWith("/inscription")
 	        		|| url.startsWith("/js/") 
 	        		|| url.equals("/listeRestaurants")
 	        		|| url.equals("/restaurant")
