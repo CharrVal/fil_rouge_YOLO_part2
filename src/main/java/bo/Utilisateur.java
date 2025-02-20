@@ -2,6 +2,7 @@ package bo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +27,7 @@ public class Utilisateur {
 	@JoinColumn(name="id_roles")
 	private Role role;
 	
-	@OneToMany
-	@JoinColumn(name="id_utilisateur")
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Reservation> reservations;
 
 		

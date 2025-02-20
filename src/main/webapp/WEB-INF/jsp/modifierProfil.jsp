@@ -18,38 +18,47 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/fragments/header.jsp">
-		<jsp:param name="title" value="${pageTitle}" />
-	</jsp:include>
+	<%@ include file="/WEB-INF/fragments/header.jspf"%>
+
 
 
 
 	<div class="container d-flex justify-content-start mt-5">
 		<form class="row g-3" action="modifier" method="post">
 			<div class="col-md-6">
-				<label for="inputNom" class="form-label">Nom</label>
-				<input type="text" class="form-control" id="inputNom" value="<c:out value='${sessionScope.utilisateur.nom}'/>" required>
+				<label for="inputNom" class="form-label">Nom</label> <input
+					type="text" class="form-control" id="inputNom" name="inputNom"
+					value="<c:out value='${sessionScope.utilisateur.nom}'/>" required>
 			</div>
 			<div class="col-md-6">
-				<label for="inputPrenom" class="form-label">Prénom</label> 
-				<input type="text" class="form-control" id="inputPrenom" value="<c:out value='${sessionScope.utilisateur.prenom}'/>"required>
-				
+				<label for="inputPrenom" class="form-label">Prénom</label> <input
+					type="text" class="form-control" id="inputPrenom"
+					name="inputPrenom"
+					value="<c:out value='${sessionScope.utilisateur.prenom}'/>"
+					required>
+
 			</div>
 			<div class="col-12">
-				<label for="inputEmail" class="form-label">email</label>
-				<input type="email" class="form-control" id="inputEmail" value="<c:out value='${sessionScope.utilisateur.email}'/>"required>
+				<label for="inputEmail" class="form-label">email</label> <input
+					type="email" class="form-control" id="inputEmail" name="inputEmail"
+					value="<c:out value='${sessionScope.utilisateur.email}'/>" required>
 			</div>
 			<div class="col-12">
 				<label for="inputTel" class="form-label">Téléphone</label> <input
-					type="text" class="form-control" id="inputTel" value="<c:out value='${sessionScope.utilisateur.telephone}'/>"required>
+					type="text" class="form-control" id="inputTel" name="inputTel"
+					value="<c:out value='${sessionScope.utilisateur.telephone}'/>"
+					required>
 			</div>
 			<div class="col-md-6">
 				<label for="inputLogin" class="form-label">Login</label> <input
-					type="text" class="form-control" id="inputLogin"value="<c:out value='${sessionScope.utilisateur.login}'/>"required>
+					type="text" class="form-control" id="inputLogin" name="inputLogin"
+					value="<c:out value='${sessionScope.utilisateur.login}'/>" required>
 			</div>
-						<div class="col-md-6">
-				<label for="inputMp" class="form-label">Mot de Passe</label> 
-				<input type="password" class="form-control" id="inputMp" name="inputMp" value="<c:out value='${sessionScope.utilisateur.password}'/>"required>
+			<div class="col-md-6">
+				<label for="inputMp" class="form-label">Mot de Passe</label> <input
+					type="password" class="form-control" id="inputMp" name="inputMp"
+					value="<c:out value='${sessionScope.utilisateur.password}'/>"
+					required>
 			</div>
 			<div class="col-12">
 				<button type="submit" class="btn btn-primary">Modifier</button>
@@ -58,19 +67,6 @@
 
 		</form>
 	</div>
-
-
-
-	<!-- Pour coller un compostant depuis
-	https://getbootstrap.com/docs/5.3/components/
-	coller le code du composant à l'intérieur du container suivant : -->
-
-	<div class="container d-flex justify-content-center mt-5">
-		<!-- code du composant ici-->
-	</div>
-
-	<!-- Puis ajouter les classes de styles au composant, par exemple :
-	border-0 rounded-0 bg-transparent -->
 
 
 
@@ -91,9 +87,8 @@
 		</div>
 	</div>
 
-	<jsp:include page="/WEB-INF/fragments/footer.jsp">
-		<jsp:param name="title" value="${pageTitle}" />
-	</jsp:include>
+	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
+
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

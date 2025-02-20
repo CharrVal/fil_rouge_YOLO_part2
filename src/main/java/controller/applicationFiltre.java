@@ -32,14 +32,8 @@ import bo.Utilisateur;
 	        
 	        if (url.equals("/connexion") 
 	        		|| url.equals("/accueil") 
-	        		|| url.equals("/profil") // à supprimer quand on aura la session
-	        		|| url.equals("/_template.jsp") // à supprimer quand on aura la session
 	        		|| url.startsWith("/css/") 
 	        		|| url.startsWith("/images/")
-	        		|| url.startsWith("/profil")
-	        		|| url.startsWith("/modifier")
-	        		|| url.startsWith("/supprimer")
-	        		|| url.startsWith("/deconnexion")
 	        		|| url.startsWith("/inscription")
 	        		|| url.startsWith("/js/") 
 	        		|| url.equals("/listeRestaurants")
