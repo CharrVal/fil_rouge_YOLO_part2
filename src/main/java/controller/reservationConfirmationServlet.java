@@ -79,6 +79,7 @@ public class reservationConfirmationServlet extends HttpServlet {
 			insertionOk = false;
 			request.setAttribute("erreurs", e.getMessages());
 			e.printStackTrace();
+			request.setAttribute("restaurant", restaurant);
 			request.getRequestDispatcher("/WEB-INF/jsp/reservation.jsp").forward(request, response);
 		}
 		
