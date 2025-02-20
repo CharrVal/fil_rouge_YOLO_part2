@@ -21,7 +21,7 @@
 		<%@ include file="/WEB-INF/fragments/header.jspf" %>
 		
 	
-	<div class="jumbotron-resto px-2">
+	<div class="jumbotron-resto px-2" style="background-image: url('${restaurant.url_image}')">
 	  <div class="container">
 	    <div class="row align-items-start">
 	      <div class="col-12">

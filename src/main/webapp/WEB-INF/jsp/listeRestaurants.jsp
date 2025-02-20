@@ -18,7 +18,7 @@
 	<c:forEach var="restaurant" items="${listeRestaurants }">
 		<div class="container d-flex justify-content-center mb-5">
 			<div class="card border border-black rounded-0 bg-transparent " style="width: 100%;">
-			  <img src="${restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
+			  <a href="restaurant?index=${restaurant.id }" class="d-block"><img src="${restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20 w-100" alt="Pizza"></a>
 			  <div class="card-body text-center my-3">
 			    <h4 class="card-text pb-2">${restaurant.nom}</h4>
 			    <a href="restaurant?index=${restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>

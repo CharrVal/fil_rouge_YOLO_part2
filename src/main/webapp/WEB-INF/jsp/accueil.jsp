@@ -56,8 +56,7 @@
 		<div class="card-header">
 		    Votre restaurant favori
 		  </div>
-		  <img src="images/jumbotron-bg.jpg" class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
-		
+			<a href="restaurant?index=${utilisateur.restaurant.id }" class="d-block"><img src="${utilisateur.restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20 w-100" alt="Pizza"></a>		
 		  <div class="card-body text-center my-3">
 		    <h4 class="card-text pb-2">${utilisateur.restaurant.nom}</h4>
 		    <a href="restaurant?index=${utilisateur.restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>

@@ -17,7 +17,7 @@
 
 	<%@ include file="/WEB-INF/fragments/header.jspf" %>
 		
-	 <div class="jumbotron px-2">
+	 <div class="jumbotron-resto px-2" style="background-image: url('${restaurant.url_image}')">
 	  <div class="container">
 	    <div class="row align-items-start">
 	      <div class="col-10">
@@ -33,17 +33,24 @@
 	  </div>
 	</div>
 	
-
-	<div class="container d-flex justify-content-center mt-5">
-		<a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Inscrivez-vous pour réserver</a>
-	</div>
-	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
-			<div class="card-body text-center">
-				<a href="connexion" class="card-text">Vous avez déjà un compte</a>
+	<c:if test="${empty utilisateur}">
+		<div class="container d-flex justify-content-center mt-5">
+			<a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Inscrivez-vous pour réserver</a>
+		</div>
+		<div class="container d-flex justify-content-center mb-5">
+			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+				<div class="card-body text-center">
+					<a href="connexion" class="card-text">Vous avez déjà un compte</a>
+				</div>
 			</div>
 		</div>
-	</div>
+	</c:if>
+	
+	<c:if test="${not empty utilisateur}">
+		<div class="container d-flex justify-content-center mt-5">
+			<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success btn-lg rounded-pill px-4 mx-2">Réserver</a>
+		</div>
+	</c:if>
 	
 	<div class="container d-flex justify-content-center mt-5">
 		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
