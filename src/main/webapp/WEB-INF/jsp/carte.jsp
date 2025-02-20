@@ -59,7 +59,7 @@
 	
 		<div class="card-body text-center my-3">
 			<form action="reservation" method="GET">
-				<input type="hidden" name="id" value="${reservation.id}">
+				<input type="hidden" name="idRestaurant" id="idRestaurant" value="${restaurant.id}">
 				<input  type="submit" value="Réservez" class="btn btn-outline-dark rounded-pill">
 			</form>
 		</div>

@@ -36,12 +36,14 @@
 	</div>
 	
 	<c:if test="${!empty erreurs }">
-		<div class="errors">
-			<ul>
-				<c:forEach var="msg" items="${erreurs }">
-					<li>${msg }</li>
-				</c:forEach>
-			</ul>
+		<div class="container error-container">
+			<div class="errors">
+				<ul>
+					<c:forEach var="msg" items="${erreurs }">
+						<li>${msg }</li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
 	</c:if>
 
@@ -66,11 +68,11 @@
 			</div>
 			<div class="col-md-6">
 				<label for="dateReservation" class="form-label">Date</label> 
-				<input type="date" class="form-control" id="dateReservation" name="dateReservation" value="dateReservation">
+				<input type="date" class="form-control" id="dateReservation" name="dateReservation" value="${param.dateReservation}">
 			</div>
 			<div class="col-md-6">
 				<label for="horaireReservation" class="form-label">Heure</label>
-				<input type="time" class="form-control" id="horaireReservation" name="horaireReservation" value="horaireReservation">
+				<input type="time" class="form-control" id="horaireReservation" name="horaireReservation" value="${param.horaireReservation}" >
 			</div>
 			
 			<input type="hidden" name="idRestaurant" value="${restaurant.id }">
@@ -80,24 +82,15 @@
 			</div>
 
 			</div>
-
 		</form>
-		
 	</div>
 
-
-
-	<!-- Pour coller un compostant depuis
-	https://getbootstrap.com/docs/5.3/components/
-	coller le code du composant à l'intérieur du container suivant : -->
-
-	<div class="container d-flex justify-content-center mt-5">
-		<!-- code du composant ici-->
-	</div>
-
-	<!-- Puis ajouter les classes de styles au composant, par exemple :
-	border-0 rounded-0 bg-transparent -->
-
+		<div class="card-body text-center my-3">
+			<form action="listeRestaurants" method="GET">
+				<input type="hidden" name="id" value="${restaurant.id}">	
+				<input type="submit" value="Retour à la liste de restaurants" class="btn btn-outline-dark rounded-pill">
+			</form>
+ 		</div>
 
 		<%@ include file="/WEB-INF/fragments/footer.jspf" %>
 

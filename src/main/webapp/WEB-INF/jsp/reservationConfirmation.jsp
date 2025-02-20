@@ -40,19 +40,12 @@
 		<p>Vous recevrez un email de confirmation quand notre équipe aura validé votre réservation.</p>
 	</div>
 	
-
-
-	<!-- Pour coller un compostant depuis
-	https://getbootstrap.com/docs/5.3/components/
-	coller le code du composant à l'intérieur du container suivant : -->
-
-	<div class="container d-flex justify-content-center mt-5">
-		<!-- code du composant ici-->
-	</div>
-
-	<!-- Puis ajouter les classes de styles au composant, par exemple :
-	border-0 rounded-0 bg-transparent -->
-
+		<div class="card-body text-center my-3">
+			<form action="listeRestaurants" method="GET">
+				<input type="hidden" name="id" value="${restaurant.id}">	
+				<input type="submit" value="Retour à la liste de restaurants" class="btn btn-outline-dark rounded-pill">
+			</form>
+ 		</div>
 
 		<%@ include file="/WEB-INF/fragments/footer.jspf" %>
 
