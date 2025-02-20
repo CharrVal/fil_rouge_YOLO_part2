@@ -3,29 +3,37 @@ body {
 	background-color: rgb(230, 223, 208);
 }
 
-.rotateleft {
-	rotate: -5deg;
-}
-
-.rotateright {
-	rotate: 5deg;
-}
-
 @media (min-width: 992px) {
   .container, .container-lg, .container-md, .container-sm {
     max-width: 720px;
   }
 }
 
+.rotateleft {
+	rotate: -5deg;
+}
+
 .jumbotron {
 	overflow: hidden;
 	min-height: 300px;
 	height: 40vw;
+	max-height: 400px;
 	padding-top: 8vw;
 	background-image: url('../images/jumbotron-bg.jpg');
   	background-color: #000000;
   	background-size: cover;
-  	background-position: center bottom;
+  	background-position: center center;
+}
+
+.jumbotron-resto {
+	overflow: hidden;
+	min-height: 200px;
+	height: 20vw;
+	padding-top: 8vw;
+	background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/jumbotron-bg.jpg');
+  	background-color: #000000;
+  	background-size: cover;
+  	background-position: center center;
 }
 
 .jumbospacer {

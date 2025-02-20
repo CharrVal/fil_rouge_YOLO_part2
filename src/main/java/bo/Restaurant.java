@@ -30,18 +30,10 @@ public class Restaurant {
 	
 	@OneToMany
 	@JoinColumn(name="id_restaurants")
-	private List<Reservation> reservations;
-	
-	@OneToMany
-	@JoinColumn(name="id_restaurants")
-	private List<Utilisateur> utilisateurs;
-	
-	@OneToMany
-	@JoinColumn(name="id_restaurants")
 	private List<Horaire> horaires;
 
-	public Restaurant(int id, String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
-			List<Utilisateur> utilisateurs, List<Horaire> horaires) {
+	public Restaurant(int id, String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant,
+			List<Horaire> horaires) {
 		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -49,21 +41,17 @@ public class Restaurant {
 		this.url_image = url_image;
 		this.carte = carte;
 		this.tablesRestaurant = tablesRestaurant;
-		this.reservations = reservations;
-		this.utilisateurs = utilisateurs;
 		this.horaires = horaires;
 	}
 	
-	public Restaurant(String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant, List<Reservation> reservations,
-			List<Utilisateur> utilisateurs, List<Horaire> horaires) {
+	public Restaurant(String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant,
+			List<Horaire> horaires) {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.email = email;
 		this.url_image = url_image;
 		this.carte = carte;
 		this.tablesRestaurant = tablesRestaurant;
-		this.reservations = reservations;
-		this.utilisateurs = utilisateurs;
 		this.horaires = horaires;
 	}
 	
@@ -131,22 +119,6 @@ public class Restaurant {
 
 	public void setTablesRestaurant(List<TableRestaurant> tablesRestaurant) {
 		this.tablesRestaurant = tablesRestaurant;
-	}
-
-	public List<Reservation> getReservations() {
-		return reservations;
-	}
-
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
-	}
-
-	public List<Utilisateur> getUtilisateurs() {
-		return utilisateurs;
-	}
-
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
 	}
 
 	public List<Horaire> getHoraires() {
