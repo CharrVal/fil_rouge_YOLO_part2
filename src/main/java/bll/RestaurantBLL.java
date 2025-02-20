@@ -30,4 +30,8 @@ public class RestaurantBLL {
 			// verifier(restaurant);
 			dao.update(restaurant);
 		}
+		
+		public Restaurant deletebyId(int id) {
+			return dao.deletebyId(id);
+		}
 }

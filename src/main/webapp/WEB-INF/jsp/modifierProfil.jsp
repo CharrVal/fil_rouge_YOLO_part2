@@ -28,89 +28,54 @@
 
 
 
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
-    <form class="row g-3" action="modifier" method="post">
-        <div class="col-md-6">
-            <label for="inputNom" class="form-label">Nom</label> 
-            <input type="text" 
-                   class="form-control ${not empty erreur['nom'] ? 'is-invalid' : '' }" 
-                   id="inputNom" name="inputNom" 
-                   value="<c:out value='${sessionScope.utilisateur.nom}'/>" required>
-            <div class="invalid-feedback">${erreur['nom']}</div>
-        </div>
-        
-        <div class="col-md-6">
-            <label for="inputPrenom" class="form-label">Prénom</label> 
-            <input type="text" 
-                   class="form-control ${not empty erreur['prenom'] ? 'is-invalid' : '' }" 
-                   id="inputPrenom" name="inputPrenom" 
-                   value="<c:out value='${sessionScope.utilisateur.prenom}'/>" required>
-            <div class="invalid-feedback">${erreur['prenom']}</div>
-        </div>
-        
-        <div class="col-12">
-            <label for="inputEmail" class="form-label">Email</label> 
-            <input type="email" 
-                   class="form-control ${not empty erreur['email'] ? 'is-invalid' : '' }" 
-                   id="inputEmail" name="inputEmail" 
-                   value="<c:out value='${sessionScope.utilisateur.email}'/>" required>
-            <div class="invalid-feedback">${erreur['email']}</div>
-        </div>
-        
-        <div class="col-12">
-            <label for="inputTel" class="form-label">Téléphone</label> 
-            <input type="text" 
-                   class="form-control ${not empty erreur['telephone'] ? 'is-invalid' : '' }" 
-                   id="inputTel" name="inputTel" 
-                   value="<c:out value='${sessionScope.utilisateur.telephone}'/>" required>
-            <div class="invalid-feedback">${erreur['telephone']}</div>
-        </div>
-        
-        <div class="col-md-6">
-            <label for="inputLogin" class="form-label">Login</label> 
-            <input type="text" 
-                   class="form-control ${not empty erreur['login'] ? 'is-invalid' : '' }" 
-                   id="inputLogin" name="inputLogin" 
-                   value="<c:out value='${sessionScope.utilisateur.login}'/>" required>
-            <div class="invalid-feedback">${erreur['login']}</div>
-        </div>
-        
-        <div class="col-md-6">
-            <label for="inputMp" class="form-label">Mot de Passe</label> 
-            <input type="password" 
-                   class="form-control ${not empty erreur['password'] ? 'is-invalid' : '' }" 
-                   id="inputMp" name="inputMp" 
-                   value="<c:out value='${sessionScope.utilisateur.password}'/>" required>
-            <div class="invalid-feedback">${erreur['password']}</div>
-        </div>
-        
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Modifier</button>
-        </div>
-    </form>
-</div>
 
-	</div>
-
-
-	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border border-black rounded-0 bg-transparent"
-			style="width: 100%;">
-			<div class="card-header">Votre restaurant favori</div>
-			<img src="images/jumbotron-bg.jpg"
-				class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
-
-			<div class="card-body text-center my-3">
-				<h4 class="card-text pb-2">Pizza YOLO Chambéry</h4>
-				<a href="restaurant" class="btn btn-outline-dark rounded-pill">Accéder
-					à la page</a> <a href="reservation"
-					class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+	<div class="container d-flex justify-content-start mt-5">
+		<form class="row g-3" action="modifier" method="post">
+			<div class="col-md-6">
+				<label for="inputNom" class="form-label">Nom</label> <input
+					type="text" class="form-control" id="inputNom" name="inputNom"
+					value="<c:out value='${sessionScope.utilisateur.nom}'/>" required>
 			</div>
-		</div>
+			<div class="col-md-6">
+				<label for="inputPrenom" class="form-label">Prénom</label> <input
+					type="text" class="form-control" id="inputPrenom"
+					name="inputPrenom"
+					value="<c:out value='${sessionScope.utilisateur.prenom}'/>"
+					required>
+			</div>
+			<div class="col-12">
+				<label for="inputEmail" class="form-label">E-mail</label> <input
+					type="email" class="form-control" id="inputEmail" name="inputEmail"
+					value="<c:out value='${sessionScope.utilisateur.email}'/>" required>
+			</div>
+			<div class="col-12">
+				<label for="inputTel" class="form-label">Téléphone</label> <input
+					type="text" class="form-control" id="inputTel" name="inputTel"
+					value="<c:out value='${sessionScope.utilisateur.telephone}'/>"
+					required>
+			</div>
+			<div class="col-md-6">
+				<label for="inputLogin" class="form-label">Identifiant</label> <input
+					type="text" class="form-control" id="inputLogin" name="inputLogin"
+					value="<c:out value='${sessionScope.utilisateur.login}'/>" required>
+			</div>
+			<div class="col-md-6">
+				<label for="inputMp" class="form-label">Mot de Passe</label> <input
+					type="password" class="form-control" id="inputMp" name="inputMp"
+					value="<c:out value='${sessionScope.utilisateur.password}'/>"
+					required>
+			</div>
+			<div class="container d-flex justify-content-center mb-2">
+				<div class="col-md-12 mt-3 text-center">
+					<button type="submit" class="btn btn-success rounded-pill px-4 mx-2">Modifier</button>
+				</div>
+			</div>
+		</form>
 	</div>
+
+
 
 	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -21,7 +21,7 @@
 		<%@ include file="/WEB-INF/fragments/header.jspf" %>
 		
 	
-	<div class="jumbotron-resto px-2">
+	<div class="jumbotron-resto px-2" style="background-image: url('${restaurant.url_image}')">
 	  <div class="container">
 	    <div class="row align-items-start">
 	      <div class="col-12">
@@ -35,7 +35,17 @@
 	        <h2 class="display-4 fw-bold lh-1 pb-3">Reserver une table</h2>
 	</div>
 	
-		
+	<c:if test="${!empty erreurs }">
+		<div class="container error-container">
+			<div class="errors">
+				<ul>
+					<c:forEach var="msg" items="${erreurs }">
+						<li>${msg }</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+	</c:if>
 
 	<div class="container d-flex justify-content-start mt-3 px-5 px-sm-2">
 		<form class="row g-3" action="reservationConfirmation" method="post">
@@ -45,24 +55,24 @@
 					<span class="fst-italic text-muted">Pour les commandes de plus de 8 personnes, merci de contacter le restaurant.</span>
 				</label>
 				<select name="nbPersonnes" class="form-select">
-				  <option selected>-</option>
-				  <option value="1">1</option>
-				  <option value="2">2</option>
-				  <option value="3">3</option>
-				  <option value="4">4</option>
-				  <option value="5">5</option>
-				  <option value="6">6</option>
-				  <option value="7">7</option>
-				  <option value="8">8</option>
+				  <option value="" disabled selected>Choisissez un nombre</option>
+				  <option value="1" ${param.nbPersonnes == "1" ? "selected" : ""}>1</option>
+				  <option value="2" ${param.nbPersonnes == "2" ? "selected" : ""}>2</option>
+				  <option value="3" ${param.nbPersonnes == "3" ? "selected" : ""}>3</option>
+				  <option value="4" ${param.nbPersonnes == "4" ? "selected" : ""}>4</option>
+				  <option value="5" ${param.nbPersonnes == "5" ? "selected" : ""}>5</option>
+				  <option value="6" ${param.nbPersonnes == "6" ? "selected" : ""}>6</option>
+				  <option value="7" ${param.nbPersonnes == "7" ? "selected" : ""}>7</option>
+				  <option value="8" ${param.nbPersonnes == "8" ? "selected" : ""}>8</option>
 				</select>
 			</div>
 			<div class="col-md-6">
 				<label for="dateReservation" class="form-label">Date</label> 
-				<input type="date" class="form-control" id="dateReservation" name="dateReservation" value="dateReservation">
+				<input type="date" class="form-control" id="dateReservation" name="dateReservation" value="${param.dateReservation}">
 			</div>
 			<div class="col-md-6">
 				<label for="horaireReservation" class="form-label">Heure</label>
-				<input type="time" class="form-control" id="horaireReservation" name="horaireReservation" value="horaireReservation">
+				<input type="time" class="form-control" id="horaireReservation" name="horaireReservation" value="${param.horaireReservation}" >
 			</div>
 			
 			<input type="hidden" name="idRestaurant" value="${restaurant.id }">
@@ -72,24 +82,15 @@
 			</div>
 
 			</div>
-
 		</form>
-		
 	</div>
 
-
-
-	<!-- Pour coller un compostant depuis
-	https://getbootstrap.com/docs/5.3/components/
-	coller le code du composant à l'intérieur du container suivant : -->
-
-	<div class="container d-flex justify-content-center mt-5">
-		<!-- code du composant ici-->
-	</div>
-
-	<!-- Puis ajouter les classes de styles au composant, par exemple :
-	border-0 rounded-0 bg-transparent -->
-
+		<div class="card-body text-center my-3">
+			<form action="listeRestaurants" method="GET">
+				<input type="hidden" name="id" value="${restaurant.id}">	
+				<input type="submit" value="Retour à la liste de restaurants" class="btn btn-outline-dark rounded-pill">
+			</form>
+ 		</div>
 
 		<%@ include file="/WEB-INF/fragments/footer.jspf" %>
 

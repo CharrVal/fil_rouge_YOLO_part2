@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,24 +17,48 @@
 
 	<%@ include file="/WEB-INF/fragments/header.jspf" %>
 		
-	 <div class="jumbotron px-2">
+	 <div class="jumbotron-resto px-2" style="background-image: url('${restaurant.url_image}')">
 	  <div class="container">
 	    <div class="row align-items-start">
-	      <div class="col-12">
+	      <div class="col-10">
 	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">${restaurant.nom}</h1>
+	      </div>
+	      <div class="col-2 text-end">
+	        <a href="ajouterfavori?idRestaurant=${restaurant.id }">
+	        <c:if test="${utilisateur.restaurant.id == restaurant.id}"><i class="bi bi-star-fill border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
+	        <c:if test="${utilisateur.restaurant.id != restaurant.id}"><i class="bi bi-star border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
+	        </a>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-
-	<div class="container d-flex justify-content-center mt-5">
-		<a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Inscrivez-vous pour réserver</a>
-	</div>
-	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
-			<div class="card-body text-center">
-				<a href="connexion" class="card-text">Vous avez déjà un compte</a>
+	
+	<c:if test="${empty utilisateur}">
+		<div class="container d-flex justify-content-center mt-5">
+			<a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Inscrivez-vous pour réserver</a>
+		</div>
+		<div class="container d-flex justify-content-center mb-5">
+			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+				<div class="card-body text-center">
+					<a href="connexion" class="card-text">Vous avez déjà un compte</a>
+				</div>
 			</div>
+		</div>
+	</c:if>
+	
+	<c:if test="${not empty utilisateur}">
+		<div class="container d-flex justify-content-center mt-5">
+			<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success btn-lg rounded-pill px-4 mx-2">Réserver</a>
+			<a href="contactezNous?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success btn-lg rounded-pill px-4 mx-2">Contactez Nous</a>
+		</div>
+	</c:if>
+	
+	<div class="container d-flex justify-content-center mt-5">
+		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+		  <div class="card-body text-center">
+		    <h2 class="card-title">Notre adresse</h2>
+		    <p class="card-text">${restaurant.adresse}</p>
+		  </div>
 		</div>
 	</div>
 		
@@ -43,16 +68,16 @@
 					<div>
 						<p>${horaire.jour} :
 						<c:if test="${horaire.ouverture == null && horaire.fermeture == null}">
-						fermé
+							fermé
 						</c:if>
 						<c:if test="${horaire.ouverture != null}">
-						<fmt:parseDate value="${horaire.ouverture}" pattern="yyyy-MM-dd'T'HH:mm" var="ouvertureDate" type="both" />
-						<fmt:formatDate value="${ouvertureDate}" pattern="HH:mm" />
-						-
+							<fmt:parseDate value="${horaire.ouverture}" pattern="yyyy-MM-dd'T'HH:mm" var="ouvertureDate" type="both" />
+							<fmt:formatDate value="${ouvertureDate}" pattern="HH:mm" />
+							-
 						</c:if>
 						<c:if test="${horaire.fermeture != null}">
-						<fmt:parseDate value="${horaire.fermeture}" pattern="yyyy-MM-dd'T'HH:mm" var="fermetureDate" type="both" />
-						<fmt:formatDate value="${fermetureDate}" pattern="HH:mm" />
+							<fmt:parseDate value="${horaire.fermeture}" pattern="yyyy-MM-dd'T'HH:mm" var="fermetureDate" type="both" />
+							<fmt:formatDate value="${fermetureDate}" pattern="HH:mm" />
 						</c:if>
 						</p>
 					</div>
