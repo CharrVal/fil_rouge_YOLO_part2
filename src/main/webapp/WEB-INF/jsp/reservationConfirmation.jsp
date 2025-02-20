@@ -37,6 +37,9 @@
 	
 	<div class="container d-flex justify-content-center mt-5">
 		<p>Merci pour votre réservation !</p>
+	</div>
+	
+	<div class="container d-flex justify-content-center mt-2">
 		<p>Vous recevrez un email de confirmation quand notre équipe aura validé votre réservation.</p>
 	</div>
 	

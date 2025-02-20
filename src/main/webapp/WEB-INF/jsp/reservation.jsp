@@ -35,7 +35,15 @@
 	        <h2 class="display-4 fw-bold lh-1 pb-3">Reserver une table</h2>
 	</div>
 	
-		
+	<c:if test="${!empty erreurs }">
+		<div class="errors">
+			<ul>
+				<c:forEach var="msg" items="${erreurs }">
+					<li>${msg }</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
 
 	<div class="container d-flex justify-content-start mt-3 px-5 px-sm-2">
 		<form class="row g-3" action="reservationConfirmation" method="post">

@@ -148,3 +148,17 @@ footer {
     max-width: 90%;
     line-height: 1.4;
 }
+
+.errors {
+	background-color: #ff8888;
+	border: solid #800000 1px;
+	color: #800000;
+	padding-top: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.error_input {
+	border: solid #800000 1px;
+}
