@@ -55,15 +55,15 @@
 					<span class="fst-italic text-muted">Pour les commandes de plus de 8 personnes, merci de contacter le restaurant.</span>
 				</label>
 				<select name="nbPersonnes" class="form-select">
-				  <option selected></option>
-				  <option value="1">1</option>
-				  <option value="2">2</option>
-				  <option value="3">3</option>
-				  <option value="4">4</option>
-				  <option value="5">5</option>
-				  <option value="6">6</option>
-				  <option value="7">7</option>
-				  <option value="8">8</option>
+				  <option value="" disabled selected>Choisissez un nombre</option>
+				  <option value="1" ${param.nbPersonnes == "1" ? "selected" : ""}>1</option>
+				  <option value="2" ${param.nbPersonnes == "2" ? "selected" : ""}>2</option>
+				  <option value="3" ${param.nbPersonnes == "3" ? "selected" : ""}>3</option>
+				  <option value="4" ${param.nbPersonnes == "4" ? "selected" : ""}>4</option>
+				  <option value="5" ${param.nbPersonnes == "5" ? "selected" : ""}>5</option>
+				  <option value="6" ${param.nbPersonnes == "6" ? "selected" : ""}>6</option>
+				  <option value="7" ${param.nbPersonnes == "7" ? "selected" : ""}>7</option>
+				  <option value="8" ${param.nbPersonnes == "8" ? "selected" : ""}>8</option>
 				</select>
 			</div>
 			<div class="col-md-6">
