@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,26 +27,31 @@
 	  </div>
 	</div>
 	
-	<div class="container d-flex justify-content-center mt-5">
-		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
-		  <div class="card-body text-center">
-		    <h5 class="card-title">Créez votre compte</h5>
-		    <p class="card-text">Réservez dans tous nos restaurants, recevez des offres spéciales, contactez nos équipes... N'attendez plus pour vous inscrire !</p>
-		    <a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Je m'inscris</a>
-		  </div>
-		</div>
-	</div>
 	
-	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
-		  <div class="card-body text-center">
-		    <p class="card-text">Vous avez déjà un compte ?</p>
-		    <a href="connexion" class="btn btn-outline-dark rounded-pill">Je me connecte</a>
-		  </div>
+	<c:if test="${empty utilisateur}">
+	    <div class="container d-flex justify-content-center mt-5">
+			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+			  <div class="card-body text-center">
+			    <h5 class="card-title">Créez votre compte</h5>
+			    <p class="card-text">Réservez dans tous nos restaurants, recevez des offres spéciales, contactez nos équipes... N'attendez plus pour vous inscrire !</p>
+			    <a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Je m'inscris</a>
+			  </div>
+			</div>
 		</div>
-	</div>
+		
+		<div class="container d-flex justify-content-center mb-5">
+			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+			  <div class="card-body text-center">
+			    <p class="card-text">Vous avez déjà un compte ?</p>
+			    <a href="connexion" class="btn btn-outline-dark rounded-pill">Je me connecte</a>
+			  </div>
+			</div>
+		</div>
+	</c:if>
 	
-	<div class="container d-flex justify-content-center mb-5">
+	
+	<c:if test="${not empty utilisateur}">
+	<div class="container d-flex justify-content-center my-5">
 		<div class="card border border-black rounded-0 bg-transparent" style="width: 100%;">
 		<div class="card-header">
 		    Votre restaurant favori
@@ -59,6 +65,7 @@
 		  </div>
 		</div>
 	</div>
+	</c:if>
 	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
     

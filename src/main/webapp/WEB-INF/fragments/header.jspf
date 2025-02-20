@@ -10,7 +10,7 @@
 	      </div> 
 	      -->
 	      <div class="col-8 d-flex justify-content-end align-items-center gap-2">
-	        <a class="link-secondary text-decoration-none text-black" href="profil" aria-label="Search">Bonjour Abdel !</a>
+	        <a class="link-secondary text-decoration-none text-black" href="profil" aria-label="Search"><c:if test="${not empty utilisateur}">Bonjour ${utilisateur.prenom} !</c:if></a>
 	         <a class="text-decoration-none text-black" href="profil"><i class="bi bi-person-circle user-icon"></i></a>
 	      </div>
 	    </div>
