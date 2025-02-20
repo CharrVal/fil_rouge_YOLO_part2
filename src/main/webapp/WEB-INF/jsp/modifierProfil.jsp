@@ -21,9 +21,7 @@
 	<%@ include file="/WEB-INF/fragments/header.jspf"%>
 
 
-
-
-	<div class="shadow-lg p-3 mb-5 bg-body rounded">
+	<div class="container d-flex justify-content-start mt-5">
 		<form class="row g-3" action="modifier" method="post">
 			<div class="col-md-6">
 				<label for="inputNom" class="form-label">Nom</label> <input
@@ -36,10 +34,9 @@
 					name="inputPrenom"
 					value="<c:out value='${sessionScope.utilisateur.prenom}'/>"
 					required>
-
 			</div>
 			<div class="col-12">
-				<label for="inputEmail" class="form-label">email</label> <input
+				<label for="inputEmail" class="form-label">E-mail</label> <input
 					type="email" class="form-control" id="inputEmail" name="inputEmail"
 					value="<c:out value='${sessionScope.utilisateur.email}'/>" required>
 			</div>
@@ -50,7 +47,7 @@
 					required>
 			</div>
 			<div class="col-md-6">
-				<label for="inputLogin" class="form-label">Login</label> <input
+				<label for="inputLogin" class="form-label">Identifiant</label> <input
 					type="text" class="form-control" id="inputLogin" name="inputLogin"
 					value="<c:out value='${sessionScope.utilisateur.login}'/>" required>
 			</div>
@@ -60,11 +57,11 @@
 					value="<c:out value='${sessionScope.utilisateur.password}'/>"
 					required>
 			</div>
-			<div class="col-12">
-				<button type="submit" class="btn btn-primary">Modifier</button>
+			<div class="container d-flex justify-content-center mb-2">
+				<div class="col-md-12 mt-3 text-center">
+					<button type="submit" class="btn btn-success rounded-pill px-4 mx-2">Modifier</button>
+				</div>
 			</div>
-
-
 		</form>
 	</div>
 	<c:if test="${not empty erreur}">
@@ -74,30 +71,12 @@
 	</c:if>
 
 
-		<div class="container d-flex justify-content-center mb-5">
-			<div class="card border border-black rounded-0 bg-transparent"
-				style="width: 100%;">
-				<div class="card-header">Votre restaurant favori</div>
-				<img src="images/jumbotron-bg.jpg"
-					class="card-img-top-smaller border-0 rounded-0 max-h-20"
-					alt="Pizza">
+	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
 
-				<div class="card-body text-center my-3">
-					<h4 class="card-text pb-2">Pizza YOLO Chambéry</h4>
-					<a href="restaurant" class="btn btn-outline-dark rounded-pill">Accéder
-						à la page</a> <a href="reservation"
-						class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
-				</div>
-			</div>
-		</div>
-
-		<%@ include file="/WEB-INF/fragments/footer.jspf"%>
-
-
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-			crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
 </body>
 </html>
 

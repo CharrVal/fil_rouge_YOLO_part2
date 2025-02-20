@@ -71,12 +71,16 @@ public class reservationConfirmationServlet extends HttpServlet {
 		System.out.println(resa.getRestaurant().getId());
 		System.out.println(resa.getStatut());
 		System.out.println(resa.getUtilisateur().getId());
-
+		
+		boolean insertionOk = true;
 		try {
 			resaBll.insert(resa);
 		} catch (ReservationException e) {
-			// TODO Auto-generated catch block
+			insertionOk = false;
+			request.setAttribute("erreurs", e.getMessages());
 			e.printStackTrace();
+			request.setAttribute("restaurant", restaurant);
+			request.getRequestDispatcher("/WEB-INF/jsp/reservation.jsp").forward(request, response);
 		}
 		
 		/*
@@ -85,9 +89,9 @@ public class reservationConfirmationServlet extends HttpServlet {
 		 * e.printStackTrace(); }
 		 */
 		
-		
-		
-		request.setAttribute("restaurant", restaurant);
-		request.getRequestDispatcher("/WEB-INF/jsp/reservationConfirmation.jsp").forward(request, response);
+		if (insertionOk) {
+			request.setAttribute("restaurant", restaurant);
+			request.getRequestDispatcher("/WEB-INF/jsp/reservationConfirmation.jsp").forward(request, response);
+		}
 	}
 }

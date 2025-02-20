@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,39 +27,44 @@
 	  </div>
 	</div>
 	
-	<div class="container d-flex justify-content-center mt-5">
-		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
-		  <div class="card-body text-center">
-		    <h5 class="card-title">Créez votre compte</h5>
-		    <p class="card-text">Réservez dans tous nos restaurants, recevez des offres spéciales, contactez nos équipes... N'attendez plus pour vous inscrire !</p>
-		    <a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Je m'inscris</a>
-		  </div>
-		</div>
-	</div>
 	
-	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
-		  <div class="card-body text-center">
-		    <p class="card-text">Vous avez déjà un compte ?</p>
-		    <a href="connexion" class="btn btn-outline-dark rounded-pill">Je me connecte</a>
-		  </div>
+	<c:if test="${empty utilisateur}">
+	    <div class="container d-flex justify-content-center mt-5">
+			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+			  <div class="card-body text-center">
+			    <h5 class="card-title">Créez votre compte</h5>
+			    <p class="card-text">Réservez dans tous nos restaurants, recevez des offres spéciales, contactez nos équipes... N'attendez plus pour vous inscrire !</p>
+			    <a href="inscription" class="btn btn-success btn-lg rounded-pill px-4">Je m'inscris</a>
+			  </div>
+			</div>
 		</div>
-	</div>
+		
+		<div class="container d-flex justify-content-center mb-5">
+			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+			  <div class="card-body text-center">
+			    <p class="card-text">Vous avez déjà un compte ?</p>
+			    <a href="connexion" class="btn btn-outline-dark rounded-pill">Je me connecte</a>
+			  </div>
+			</div>
+		</div>
+	</c:if>
 	
-	<div class="container d-flex justify-content-center mb-5">
+	
+	<c:if test="${not empty utilisateur}">
+	<div class="container d-flex justify-content-center my-5">
 		<div class="card border border-black rounded-0 bg-transparent" style="width: 100%;">
 		<div class="card-header">
 		    Votre restaurant favori
 		  </div>
-		  <img src="images/jumbotron-bg.jpg" class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
-		
+			<a href="restaurant?index=${utilisateur.restaurant.id }" class="d-block"><img src="${utilisateur.restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20 w-100" alt="Pizza"></a>		
 		  <div class="card-body text-center my-3">
-		    <h4 class="card-text pb-2">Pizza YOLO Chambéry</h4>
-		    <a href="restaurant" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
-		    <a href="reservation" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+		    <h4 class="card-text pb-2">${utilisateur.restaurant.nom}</h4>
+		    <a href="restaurant?index=${utilisateur.restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
+		    <a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
 		  </div>
 		</div>
 	</div>
+	</c:if>
 	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
     
