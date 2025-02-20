@@ -48,15 +48,27 @@
 	                ${sessionScope.utilisateur.prenom}</li>
 	                <li class="list-group-item border-0"><strong>Identifiant :</strong> 
 	                ${sessionScope.utilisateur.login}</li>
-	                <li class="list-group-item border-0"><strong>Email :</strong> 
-	                ${utilisateur.email}</li>
+	                <li class="list-group-item border-0"><strong>E-mail :</strong> 
+	                ${sessionScope.utilisateur.email}</li>
 	                <li class="list-group-item border-0"><strong>Téléphone :</strong> 
 	                ${sessionScope.utilisateur.telephone}</li>
+	                <li class="list-group-item border-0">
+	                	<div class="d-flex justify-content-between">
+	                		<div>
+	                			<strong>Votre restaurant favori :</strong>
+	                			<span class="ms-1">${utilisateur.restaurant.nom}</span>
+	                		</div> 
+	                		<form action="supprimerfavori" method="post">
+    							<input type="hidden" name="idRestaurant" value="${utilisateur.restaurant.id}" />
+    							<button type="submit" class="btn btn-link text-danger p-0 text-decoration-none">❌</button>
+							</form>
+						</div>
+	                </li>
 	            </ul>
 	        </div>
 	    </div>
 	</div>
-		
+
 	<div class="container d-flex justify-content-center">
 		<div class="col-md-12 mt-3 text-center">
 			<form action="modifier" method="get">
@@ -66,7 +78,7 @@
 		</div>
 	</div>
 
-	<div class="container d-flex justify-content-center mb-2">
+	<div class="container d-flex justify-content-center">
 		<div class="col-md-12 mt-3 text-center">
 			<form action="supprimer" method="get">
 				<input type="hidden" name="idUtilisateur"/>
@@ -74,24 +86,8 @@
 			</form>
 		</div>
 	</div>
-	
+		
 	<div class="container d-flex justify-content-center mb-2">
-		<div class="card border border-black rounded-0 bg-transparent"
-			style="width: 100%;">
-			<div class="card-header">Votre restaurant favori</div>
-			<img src="images/jumbotron-bg.jpg"
-				class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
-
-			<div class="card-body text-center my-3">
-				<h4 class="card-text pb-2">${sessionScope.utilisateur.restaurant}</h4>
-				<a href="restaurant" class="btn btn-outline-dark rounded-pill">Accéder
-					à la page</a> <a href="reservation"
-					class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
-			</div>
-		</div>
-	</div>
-	
-	<div class="container d-flex justify-content-center">
 		<div class="col-md-12 mt-3 text-center">
 			<form action="deconnexion" method="get">
 				<button type="submit" class="btn btn-success rounded-pill px-4 mx-2">Déconnexion</button>
@@ -104,6 +100,7 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous">
+	</script>
 </body>
 </html>

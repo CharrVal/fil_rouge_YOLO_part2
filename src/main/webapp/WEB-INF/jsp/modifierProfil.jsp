@@ -61,25 +61,7 @@
 					<button type="submit" class="btn btn-success rounded-pill px-4 mx-2">Modifier</button>
 				</div>
 			</div>
-
-
 		</form>
-	</div>
-
-	<div class="container d-flex justify-content-center mb-5">
-		<div class="card border border-black rounded-0 bg-transparent"
-			style="width: 100%;">
-			<div class="card-header">Votre restaurant favori</div>
-			<img src="images/jumbotron-bg.jpg"
-				class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
-
-			<div class="card-body text-center my-3">
-				<h4 class="card-text pb-2">Pizza YOLO Chambéry</h4>
-				<a href="restaurant" class="btn btn-outline-dark rounded-pill">Accéder
-					à la page</a> <a href="reservation"
-					class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
-			</div>
-		</div>
 	</div>
 
 	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
