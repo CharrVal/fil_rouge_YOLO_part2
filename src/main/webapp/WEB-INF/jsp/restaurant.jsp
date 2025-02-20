@@ -48,10 +48,7 @@
 	
 	<c:if test="${not empty utilisateur}">
 		<div class="container d-flex justify-content-center mt-5">
-			<form action="reservation" method="GET">
-				<input type="hidden" name="id" value="${reservation.id}">
-				<input  type="submit" value="Réserver" class="btn btn-success btn-lg rounded-pill px-4">
-			</form>
+			<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success btn-lg rounded-pill px-4 mx-2">Réserver</a>
 		</div>
 	</c:if>
 	
