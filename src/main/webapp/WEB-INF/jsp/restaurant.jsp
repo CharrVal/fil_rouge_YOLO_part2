@@ -49,6 +49,7 @@
 	<c:if test="${not empty utilisateur}">
 		<div class="container d-flex justify-content-center mt-5">
 			<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success btn-lg rounded-pill px-4 mx-2">Réserver</a>
+			<a href="contactezNous?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success btn-lg rounded-pill px-4 mx-2">Contactez Nous</a>
 		</div>
 	</c:if>
 	
