@@ -46,8 +46,7 @@ public class profilModifServlet extends HttpServlet {
 				session.setAttribute("utilisateur", util);
 				response.sendRedirect("profil");
 
-		
-		} catch (UtilisateurException e) {
+			} catch (UtilisateurException e) {
 				request.setAttribute("erreur", e.getErreurs());
 				request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp").forward(request, response);
 			}

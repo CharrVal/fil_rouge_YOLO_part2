@@ -25,11 +25,11 @@ public class UtilisateurBLL {
 	}
 
 	public void insert(Utilisateur utilisateur) throws UtilisateurException, NamingException {
-		
+
 		verifier(utilisateur);
 		Utilisateur existant = dao.connecterUtilisateur(utilisateur.getLogin(), utilisateur.getPassword());
 		if (existant != null) {
-			throw new UtilisateurException("Un compte avec ce login existe déjà.",null);
+			throw new UtilisateurException("Un compte avec ce login existe déjà.", null);
 		}
 		dao.insert(utilisateur);
 	}
@@ -73,7 +73,7 @@ public class UtilisateurBLL {
 			erreurs.put("password",
 					"Votre mot de passe n'est pas valide! Il doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.");
 		}
-		
+
 		if (!erreurs.isEmpty()) {
 			throw new UtilisateurException("Les informations saisies sont incorrectes", erreurs);
 		}
