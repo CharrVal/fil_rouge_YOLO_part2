@@ -11,29 +11,31 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity @Table(name="restaurants")
+@Entity
+@Table(name = "restaurants")
 public class Restaurant {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String adresse;
 	private String email;
 	private String url_image;
-	
+
 	@OneToOne
-	@JoinColumn(name="id_cartes")
+	@JoinColumn(name = "id_cartes")
 	private Carte carte;
-	
+
 	@OneToMany
-	@JoinColumn(name="id_restaurants")
+	@JoinColumn(name = "id_restaurants")
 	private List<TableRestaurant> tablesRestaurant;
-	
+
 	@OneToMany
-	@JoinColumn(name="id_restaurants")
+	@JoinColumn(name = "id_restaurants")
 	private List<Horaire> horaires;
 
-	public Restaurant(int id, String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant,
-			List<Horaire> horaires) {
+	public Restaurant(int id, String nom, String adresse, String email, String url_image, Carte carte,
+			List<TableRestaurant> tablesRestaurant, List<Horaire> horaires) {
 		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -43,9 +45,9 @@ public class Restaurant {
 		this.tablesRestaurant = tablesRestaurant;
 		this.horaires = horaires;
 	}
-	
-	public Restaurant(String nom, String adresse, String email, String url_image, Carte carte, List<TableRestaurant> tablesRestaurant,
-			List<Horaire> horaires) {
+
+	public Restaurant(String nom, String adresse, String email, String url_image, Carte carte,
+			List<TableRestaurant> tablesRestaurant, List<Horaire> horaires) {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.email = email;
@@ -54,8 +56,9 @@ public class Restaurant {
 		this.tablesRestaurant = tablesRestaurant;
 		this.horaires = horaires;
 	}
-	
-	public Restaurant() {}
+
+	public Restaurant() {
+	}
 
 	public int getId() {
 		return id;
@@ -80,7 +83,7 @@ public class Restaurant {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -127,5 +130,5 @@ public class Restaurant {
 
 	public void setHoraires(List<Horaire> horaires) {
 		this.horaires = horaires;
-	}	
+	}
 }

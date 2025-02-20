@@ -30,38 +30,45 @@
 	    <h1 class="display-4 fw-bold lh-1 pb-3">${carte.nom}</h1>		
 	</div>
 	
-	<c:set var="categoriesAffichees" value="" />
-	 
-	<c:forEach items="${carte.plats}" var="plat">
-	    <c:if test="${not fn:contains(categoriesAffichees, plat.categorie.libelle)}">
-	        <!-- Affiche la catégorie -->
-	        <h2>${plat.categorie.libelle}</h2>
-	        
-	        <c:set var="categoriesAffichees" value="${categoriesAffichees},${plat.categorie.libelle}" />
-	
-	        <c:forEach items="${carte.plats}" var="p">
-	            <c:if test="${p.categorie.libelle == plat.categorie.libelle}">
-	                <p>${p.nom}.......................................${p.prix} €</p>
-	                <p>${p.description}</p>
-	            </c:if>
-	        </c:forEach>
-	    </c:if>
-	</c:forEach>
-	
-	<div>
-		<form action="inscription" method="GET">	
-			<input type="submit" value="Inscrivez-vous pour réserver">
-		</form>
+	<div class="shade">
+		<div class="blackboard">
+			<div class="text-center my-5">
+				<c:set var="categoriesAffichees" value="" />
+				 
+				<c:forEach items="${carte.plats}" var="plat">
+				    <c:if test="${not fn:contains(categoriesAffichees, plat.categorie.libelle)}">
+				        <h2>${plat.categorie.libelle}</h2>
+				        
+				        <c:set var="categoriesAffichees" value="${categoriesAffichees},${plat.categorie.libelle}" />
+				
+				        <c:forEach items="${carte.plats}" var="p">
+				            <c:if test="${p.categorie.libelle == plat.categorie.libelle}">
+				                <div class="plat">
+								    <span class="nom-plat">${p.nom}</span>
+								    <span class="ligne-point"></span>
+								    <span class="prix-plat">${p.prix} €</span>
+								</div>
+								<p class="description-plat">${p.description}</p>
+				            </c:if>
+				        </c:forEach>
+				    </c:if>
+				</c:forEach>
+			</div>
+		</div>
 	</div>
-	<div>
-		<a href="connexion">Vous avez déjà un compte</a>
-	</div>
-	<div>
-		<form action="restaurant" method="GET">
-			<input type="hidden" name="index" value="${restaurant.id }">	
-			<input type="submit" value="Retour au détail du restaurant">
-		</form>
- 	</div>
+	
+		<div class="card-body text-center my-3">
+			<form action="reservation" method="GET">
+				<input type="hidden" name="id" value="${reservation.id}">
+				<input  type="submit" value="Réservez" class="btn btn-outline-dark rounded-pill">
+			</form>
+		</div>
+		<div class="card-body text-center my-3">
+			<form action="listeRestaurants" method="GET">
+				<input type="hidden" name="id" value="${restaurant.id}">	
+				<input type="submit" value="Retour à la liste de restaurants" class="btn btn-outline-dark rounded-pill">
+			</form>
+ 		</div>
 	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
     

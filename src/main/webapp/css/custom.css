@@ -76,3 +76,75 @@ footer {
 	border-bottom-width: 0px;
 	border-left-width: 0px;
 }
+
+.shade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: rgb(230, 223, 208);
+}
+
+.blackboard {
+    background: #252525;
+    border: 20px solid #8B5A2B; 
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    width: 80vw; 
+    max-width: 1000px;
+}
+
+.blackboard h2 {
+    font-family: 'Patrick Hand SC', cursive;
+    color: #FFD700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.plat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+    margin-top: 10px;
+}
+
+.nom-plat {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.ligne-point {
+    flex-grow: 1;
+    border-bottom: 1px dashed white;
+    margin: 0 10px;
+}
+
+.prix-plat {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.description-plat {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    font-style: italic;
+    color: #FFD700;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+    margin: 5px 0 15px 0;
+    text-align: left;
+    width: 100%;
+    max-width: 90%;
+    line-height: 1.4;
+}

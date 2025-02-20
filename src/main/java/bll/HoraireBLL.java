@@ -12,7 +12,7 @@ public class HoraireBLL {
 	public HoraireBLL() {
 		dao = new HoraireDAO();
 	}
-	
+
 	public List<Horaire> select() {
 		return dao.select();
 	}

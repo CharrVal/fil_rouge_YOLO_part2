@@ -1,7 +1,7 @@
 package bo;
-
+ 
 import java.time.LocalDateTime;
-
+ 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+ 
 @Entity @Table(name="reservations")
 public class Reservation {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +18,10 @@ public class Reservation {
 	
 	@Column(name="nombre_personne")
 	private int nbPersonne;
-
+ 
 	@Column(name = "statut")
 	private String statut;
+ 
 
 	@Column(name = "horaire_reservation")
 	private LocalDateTime horaireReservation;
@@ -49,13 +50,13 @@ public class Reservation {
 		this.utilisateur = utilisateur;
 		this.restaurant = restaurant;
 	}
-
+ 
 	public Reservation() {}
-
+ 
 	public int getId() {
 		return id;
 	}
-
+ 
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -64,22 +65,23 @@ public class Reservation {
 	public int getNbPersonne() {
 		return nbPersonne;
 	}
-
+ 
 	public void setNbPersonne(int nbPersonne) {
 		this.nbPersonne = nbPersonne;
 	}
-
+ 
 	public String getStatut() {
 		return statut;
 	}
-
+ 
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
-
+ 
 	public LocalDateTime getHoraireReservation() {
 		return horaireReservation;
 	}
+ 
 
 	public void setHoraireReservation(LocalDateTime dateTimeReservation) {
 		this.horaireReservation = dateTimeReservation;
@@ -100,3 +102,4 @@ public class Reservation {
 		this.restaurant = restaurant;
 	}
 }
+
