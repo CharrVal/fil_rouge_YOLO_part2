@@ -36,8 +36,16 @@ public class reservationConfirmationServlet extends HttpServlet {
 		Restaurant restaurant = restoBll.selectById(idResto);
 		
 		String nbPersonnesParam = request.getParameter("nbPersonnes");
-		int nbPersonnes = Integer.parseInt(nbPersonnesParam);
-		System.out.println(nbPersonnes);
+		int nbPersonnes = 0;
+		if (nbPersonnesParam == "") {
+			request.setAttribute("erreurs", "Choissiez le nombre de personnes.");
+			request.setAttribute("restaurant", restaurant);
+			request.getRequestDispatcher("/WEB-INF/jsp/reservation.jsp").forward(request, response);
+			
+		} else {
+			nbPersonnes = Integer.parseInt(nbPersonnesParam);			
+		}
+		
 		
 		String dateTimeReservationParam = request.getParameter("dateReservation") + " " + request.getParameter("horaireReservation");;
 		System.out.println(dateTimeReservationParam);
