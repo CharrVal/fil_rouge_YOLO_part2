@@ -66,7 +66,7 @@
 		</div>
 	</div>
 
-	<div class="container d-flex justify-content-center">
+	<div class="container d-flex justify-content-center mb-2">
 		<div class="col-md-12 mt-3 text-center">
 			<form action="supprimer" method="get">
 				<input type="hidden" name="idUtilisateur"/>
@@ -76,14 +76,6 @@
 	</div>
 	
 	<div class="container d-flex justify-content-center mb-2">
-		<div class="col-md-12 mt-3 text-center">
-			<form action="deconnexion" method="get">
-				<button type="submit" class="btn btn-success rounded-pill px-4 mx-2">Déconnexion</button>
-			</form>
-		</div>
-	</div>
-
-	<div class="container d-flex justify-content-center mb-5">
 		<div class="card border border-black rounded-0 bg-transparent"
 			style="width: 100%;">
 			<div class="card-header">Votre restaurant favori</div>
@@ -98,9 +90,16 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="container d-flex justify-content-center">
+		<div class="col-md-12 mt-3 text-center">
+			<form action="deconnexion" method="get">
+				<button type="submit" class="btn btn-success rounded-pill px-4 mx-2">Déconnexion</button>
+			</form>
+		</div>
+	</div>
 
 	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
