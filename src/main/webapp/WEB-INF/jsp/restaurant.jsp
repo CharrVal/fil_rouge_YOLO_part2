@@ -24,10 +24,12 @@
 	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">${restaurant.nom}</h1>
 	      </div>
 	      <div class="col-2 text-end">
-	        <a href="ajouterfavori?idRestaurant=${restaurant.id }">
-	        <c:if test="${utilisateur.restaurant.id == restaurant.id}"><i class="bi bi-star-fill border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
-	        <c:if test="${utilisateur.restaurant.id != restaurant.id}"><i class="bi bi-star border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
-	        </a>
+	      	<c:if test="${not empty utilisateur}">
+		        <a href="ajouterfavori?idRestaurant=${restaurant.id }">
+			        <c:if test="${utilisateur.restaurant.id == restaurant.id}"><i class="bi bi-star-fill border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
+			        <c:if test="${utilisateur.restaurant.id != restaurant.id}"><i class="bi bi-star border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
+		        </a>
+	        </c:if>
 	      </div>
 	    </div>
 	  </div>
