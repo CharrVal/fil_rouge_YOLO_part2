@@ -56,7 +56,7 @@
 		<div class="card-header">
 		    Votre restaurant favori
 		  </div>
-		  <img src="images/jumbotron-bg.jpg" class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
+		  <img src="${utilisateur.restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20" alt="Pizza">
 		
 		  <div class="card-body text-center my-3">
 		    <h4 class="card-text pb-2">${utilisateur.restaurant.nom}</h4>
