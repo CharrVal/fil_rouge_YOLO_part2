@@ -20,6 +20,7 @@
 
 		<%@ include file="/WEB-INF/fragments/header.jspf" %>
 		
+	
 	<div class="jumbotron-resto px-2" style="background-image: url('${restaurant.url_image}')">
 	  <div class="container">
 	    <div class="row align-items-start">
@@ -30,26 +31,33 @@
 	  </div>
 	</div>	
 	
-	<div class="container d-flex justify-content-center mt-5">
-	        <h2 class="display-4 fw-bold lh-1 pb-3">Contactez Nous</h2>
-	</div>
-	<div class="container d-flex justify-content-start mt-3 px-5 px-sm-2">
-		<form class="row g-3" action="contactezNous" method="GET">
-			<div class="col-md-12">
-				<label class="form-label" for="titre">Sujet :</label>
-				<input class="form-control" type="text" name="subject" id="titre" required>
-			</div>
-			<div class="col-md-12">
-				<label class="form-label" for="message">Votre message :</label>
-				<textarea class="form-control" id="message" name="body" rows="5" cols="30" required></textarea>
-			</div>
-			<div class="col-12 pt-3">
-				<input class="w-100 btn btn-success btn-lg rounded-pill" type="submit" value="Envoyer mon message">
-			</div>
-			<input type="hidden" name="idRestaurant" value="${restaurant.id }">
-		</form>
-	</div>
+	
+	<% if ((Boolean)request.getAttribute("emailSent")) { %>
+		<div class="container d-flex justify-content-center mt-5">
+	        <h2 class="display-4 fw-bold lh-1 pb-3">Message reçu</h2>
+		</div>
+        <div class="container d-flex justify-content-center ">
+            <p>Merci pour votre message !</p>
+        </div>
+        <div class="container d-flex justify-content-center mt-2">
+			<p>Notre équipe vous répondra dans les meilleurs délais.</p>
+		</div>
+		<div class="container d-flex justify-content-center">
+			    <a href="restaurant?index=${restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Revenir à la page du restaurant</a>
+        </div>
+    <% } else { %>
+   		 <div class="container d-flex justify-content-center mt-5">
+	        <h2 class="display-4 fw-bold lh-1 pb-3">Oups</h2>
+		</div>
+        <div class="container d-flex justify-content-center alert alert-danger">
+            L'envoi de votre message a rencontré un problème. Merci d'essayer à nouveau.
+        </div>
+        <div class="container d-flex justify-content-center">
+			    <a href="contactezNous?idRestaurant=${restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Revenir à la page contact</a>
+        </div>
+    <% } %>
 
+	
 		<div class="card-body text-center my-3">
 			<form action="listeRestaurants" method="GET">
 				<input type="hidden" name="id" value="${restaurant.id}">	
