@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import bll.UtilisateurBLL;
 import bo.Utilisateur;
@@ -22,11 +21,10 @@ import jakarta.servlet.http.HttpServletResponse;
 	    dispatcherTypes = { DispatcherType.REQUEST },
 	    urlPatterns = { "/*" }
 	)
-	public class applicationFiltre extends HttpFilter implements Filter {
-	    private static final long serialVersionUID = 1L;
+public class ApplicationFiltre extends HttpFilter implements Filter {
+	   private static final long serialVersionUID = 1L;
 
-	    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-	            throws IOException, ServletException {
+	   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 	        HttpServletResponse httpResponse = (HttpServletResponse) response;
 	        HttpServletRequest httpRequest = (HttpServletRequest) request;
 
@@ -74,8 +72,7 @@ import jakarta.servlet.http.HttpServletResponse;
 					}
 	            }
 	        }
-	        
-	        
+	                
 	     // Public pages that don't need authentication
 	        if (url.equals("/connexion") 
 	        		|| url.equals("/accueil") 
@@ -90,9 +87,8 @@ import jakarta.servlet.http.HttpServletResponse;
 	            chain.doFilter(httpRequest, httpResponse);
 	            return;
 	        }
-	        
-	        
+	                
 	        // If all authentication methods fail, redirect to login page
 	        httpResponse.sendRedirect("connexion");
-	    }
-	}
+	   }
+}

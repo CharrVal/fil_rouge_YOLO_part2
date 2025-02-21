@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/restaurant")
-public class restaurantServlet extends HttpServlet {
+public class AfficherRestaurantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RestaurantBLL restaurantbll;
 	private CarteBLL cartebll;
@@ -37,7 +37,4 @@ public class restaurantServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
 }

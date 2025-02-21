@@ -13,7 +13,7 @@ import util.EmailUtil;
 
 
 @WebServlet("/contactezNous")
-public class contactezNousServlet extends HttpServlet {
+public class ContactezNousServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RestaurantBLL bll = new RestaurantBLL();
        

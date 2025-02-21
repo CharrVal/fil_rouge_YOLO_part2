@@ -1,30 +1,20 @@
 package controller;
 
+import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-
-@WebServlet("/deconnexion")
-public class DeconnexionServlet extends HttpServlet {
+@WebServlet("/accueil")
+public class AccueilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
 		
-		Cookie cookieUsername = new Cookie("login", "");
-		cookieUsername.setMaxAge(0);
-		response.addCookie(cookieUsername);
-		
-		Cookie cookiePassword = new Cookie("password", "");
-		cookiePassword.setMaxAge(0);
-		response.addCookie(cookiePassword);
-				
 		request.getRequestDispatcher("/WEB-INF/jsp/accueil.jsp").forward(request, response);
 	}
-
+	
 }

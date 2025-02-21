@@ -19,17 +19,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/reservationConfirmation")
-public class reservationConfirmationServlet extends HttpServlet {
+public class AfficherConfirmationReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ReservationBLL resaBll = new ReservationBLL();
 	private RestaurantBLL restoBll = new RestaurantBLL();
 	private Utilisateur utilisateur;
 	private ReservationException e = new ReservationException();
-
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idRestoParam = request.getParameter("idRestaurant");
@@ -40,12 +35,10 @@ public class reservationConfirmationServlet extends HttpServlet {
 		int nbPersonnes = 0;
 		if (nbPersonnesParam == "" || nbPersonnesParam == null) {
 			e.ajouterErreur("Choissiez le nombre de personnes.");
-			
-			
+					
 		} else {
 			nbPersonnes = Integer.parseInt(nbPersonnesParam);			
 		}
-		
 		
 		String dateTimeReservationParam = request.getParameter("dateReservation") + " " + request.getParameter("horaireReservation");;
 		System.out.println(dateTimeReservationParam);
