@@ -1,4 +1,10 @@
 package controller;
+import java.io.IOException;
+
+import javax.naming.NamingException;
+
+import bll.UtilisateurBLL;
+import bo.Utilisateur;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -7,23 +13,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import javax.naming.NamingException;
-
-import bll.UtilisateurBLL;
-import bo.Utilisateur;
-
-/**
- * Servlet implementation class ConnexionServlet
- */
 @WebServlet("/connexion")
-public class connexionServlet extends HttpServlet {
+public class ConnexionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp").forward(request, response);
+        
+    	request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp").forward(request, response);
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,20 +59,18 @@ public class connexionServlet extends HttpServlet {
             if (rememberMe != null && rememberMe.equals("on")) {
                 Cookie cookieUsername = new Cookie("login", utilisateur.getLogin());
                 cookieUsername.setMaxAge(604800); // 7 days in seconds
-                cookieUsername.setPath("/");
+                //cookieUsername.setPath("/");
                 response.addCookie(cookieUsername);
                 
                 Cookie cookiePassword = new Cookie("password", utilisateur.getPassword());
                 cookiePassword.setMaxAge(604800); // 7 days in seconds
-                cookiePassword.setPath("/");
+                //cookiePassword.setPath("/");
                 response.addCookie(cookiePassword);
             }
             
             response.sendRedirect("accueil");
             return;
         }
-    
-        
         
         // If authentication fails
         request.setAttribute("error", "Invalid login credentials");

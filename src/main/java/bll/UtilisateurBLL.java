@@ -22,6 +22,10 @@ public class UtilisateurBLL {
 	public Utilisateur selectById(int id) {
 		return dao.selectById(id);
 	}
+	
+	public Utilisateur selectByLoginPassword(String login, String password) {
+		return dao.selectByLoginPassword(login, password);
+	}
 
 	public void insert(Utilisateur utilisateur) throws UtilisateurException, NamingException {
 
@@ -49,6 +53,11 @@ public class UtilisateurBLL {
 	public boolean utilisateurValide(Utilisateur utilisateur) throws SQLException {
 		dao = new UtilisateurDAO();
 		return dao.utilisateurValide(utilisateur);	
+	}
+	
+	public boolean utilisateurExiste(Utilisateur utilisateur) throws SQLException {
+		dao = new UtilisateurDAO();
+		return dao.utilisateurExiste(utilisateur);	
 	}
 
 	public void verifier(Utilisateur utilisateur) throws UtilisateurException {

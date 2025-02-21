@@ -13,23 +13,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/modifier")
-public class profilModifServlet extends HttpServlet {
+public class ModifierProfilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		UtilisateurBLL bll = new UtilisateurBLL();
 		HttpSession session = request.getSession(false);
+		
 		if (session == null) {
 			response.sendRedirect("connexion");
 		} else {
+			
 			try {
 				Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 				Utilisateur util = new Utilisateur();

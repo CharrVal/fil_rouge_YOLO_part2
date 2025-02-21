@@ -5,7 +5,9 @@ import java.util.List;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import bo.Utilisateur;
 
@@ -30,6 +32,30 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 		Utilisateur resultat = em.find(Utilisateur.class, id);
 		em.close();
 		return resultat;
+	}
+	
+	public Utilisateur selectByLoginPassword(String login, String password) {
+	    EntityManager em = emf.createEntityManager();
+	    try {
+	        // Use a JPQL query to find Utilisateur by both login and password
+	        String jpql = "SELECT u FROM Utilisateur u WHERE u.login = :login AND u.password = :password";
+	        TypedQuery<Utilisateur> query = em.createQuery(jpql, Utilisateur.class);
+	        query.setParameter("login", login);
+	        query.setParameter("password", password);
+	        
+	        // Get the first result (if any)
+	        Utilisateur resultat = null;
+	        try {
+	            resultat = query.getSingleResult();
+	        } catch (NoResultException e) {
+	            // No user found for the given login and password
+	            resultat = null;
+	        }
+	        
+	        return resultat;
+	    } finally {
+	        em.close();
+	    }
 	}
 	
 	
@@ -140,6 +166,34 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	        em.close();
 	    }
 		
+	}
+	
+	
+	public boolean utilisateurExiste(Utilisateur utilisateur) {
+	    EntityManager em = emf.createEntityManager();
+	    
+	    try {
+	        // Query the database for the user by login
+	        String query = "SELECT u FROM Utilisateur u WHERE u.login = :login";
+	        Utilisateur existingUtilisateur = em.createQuery(query, Utilisateur.class)
+	                                             .setParameter("login", utilisateur.getLogin())
+	                                             .getResultStream()
+	                                             .findFirst()
+	                                             .orElse(null);
+	        
+	        // If a user with the login exists, check the password
+	        if (existingUtilisateur != null) {
+	            if (existingUtilisateur.getPassword().equals(utilisateur.getPassword())) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    } finally {
+	        em.close();
+	    }
 	}
 
 

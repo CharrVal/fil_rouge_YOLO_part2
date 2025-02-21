@@ -14,6 +14,10 @@
 <body>
 
 <%@ include file="/WEB-INF/fragments/header.jspf" %>
+
+<div class="container d-flex justify-content-center mt-5 mb-3">
+		<h2 class="display-4 fw-bold lh-1 pb-3">Nos restaurants</h2>
+	</div>
 	
 	<c:forEach var="restaurant" items="${listeRestaurants }">
 		<div class="container d-flex justify-content-center mb-5">
