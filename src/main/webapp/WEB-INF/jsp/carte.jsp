@@ -58,7 +58,7 @@
 	</div>
 	
 		<div class="card-body text-center my-3">
-			<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+			<a href="reservation?idRestaurant=${restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
 		</div>
 		<div class="card-body text-center my-3">
 			<form action="listeRestaurants" method="GET">

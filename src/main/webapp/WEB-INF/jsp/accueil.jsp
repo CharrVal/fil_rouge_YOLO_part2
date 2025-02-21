@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		
-		<div class="container d-flex justify-content-center mb-5">
+		<div class="container d-flex justify-content-center mb-1">
 			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
 			  <div class="card-body text-center">
 			    <p class="card-text">Vous avez déjà un compte ?</p>
@@ -49,22 +49,41 @@
 		</div>
 	</c:if>
 	
+	<c:if test="${not empty utilisateur.restaurant}">
+		<div class="container d-flex justify-content-center mt-5 mb-2">
+			<div class="card border border-black rounded-0 bg-transparent" style="width: 100%;">
+				<div class="card-header">Votre restaurant favori</div>
+				<a href="restaurant?index=${utilisateur.restaurant.id }" class="d-block"><img src="${utilisateur.restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20 w-100" alt="Pizza"></a>		
+		  	<div class="card-body text-center my-3">
+		    	<h4 class="card-text pb-2">${utilisateur.restaurant.nom}</h4>
+		    	<a href="restaurant?index=${utilisateur.restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
+		    	<a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
+			</div>
+			</div>
+		</div>
+	</c:if>
 	
-	<c:if test="${not empty utilisateur}">
-	<div class="container d-flex justify-content-center my-5">
-		<div class="card border border-black rounded-0 bg-transparent" style="width: 100%;">
-		<div class="card-header">
-		    Votre restaurant favori
-		  </div>
-			<a href="restaurant?index=${utilisateur.restaurant.id }" class="d-block"><img src="${utilisateur.restaurant.url_image}" class="card-img-top-smaller border-0 rounded-0 max-h-20 w-100" alt="Pizza"></a>		
-		  <div class="card-body text-center my-3">
-		    <h4 class="card-text pb-2">${utilisateur.restaurant.nom}</h4>
-		    <a href="restaurant?index=${utilisateur.restaurant.id }" class="btn btn-outline-dark rounded-pill">Accéder à la page</a>
-		    <a href="reservation?idRestaurant=${utilisateur.restaurant.id }" class="btn btn-success rounded-pill px-4 mx-2">Réserver</a>
-		  </div>
+	<div class="container d-flex justify-content-center mb-5">
+		<div class="card border-0 rounded-0 bg-transparent about-section" style="width: 100%;">
+			<div class="card-body text-center">
+				<h3 class="card-text">À propos de Nous</h3>
+				<p>Chez Pizza YOLO, notre histoire commence avec deux amis passionnés de cuisine et de partage : Léo et Marco. Grands amateurs de pizza, ils ont parcouru l’Italie à la recherche des 
+				meilleures recettes et techniques artisanales avant de lancer leur propre aventure. Leur objectif ? Offrir des pizzas savoureuses, préparées avec des ingrédients de qualité et une 
+				touche d’audace qui reflète leur esprit convivial et créatif.</p>
+					
+				<p>Notre chaîne de restaurants repose sur une idée simple : manger une bonne pizza doit toujours être un moment de plaisir et de convivialité. Que ce soit pour une soirée entre amis, 
+				un déjeuner rapide ou un moment gourmand en famille, nous mettons tout en œuvre pour offrir une expérience chaleureuse et authentique à nos clients.<p>
+					
+				<p>Nos valeurs ? Qualité, générosité et innovation. Nos pâtes sont préparées chaque jour avec amour, nos ingrédients sont soigneusement sélectionnés, et nos recettes allient tradition 
+				et originalité pour surprendre vos papilles. Chez Pizza YOLO, nous croyons aussi à l’importance de l’éthique : nous privilégions des produits frais, des fournisseurs locaux et des 
+				pratiques responsables pour un impact positif sur notre communauté.</p>
+					
+				<p>Alors, prêt à vivre l’expérience Pizza YOLO ? Une seule règle chez nous : You Only Love Once… et ça commence par une bonne pizza ! 🍕🔥
+				</p>
+			</div>
 		</div>
 	</div>
-	</c:if>
+
 	
 	<%@ include file="/WEB-INF/fragments/footer.jspf" %>
     
