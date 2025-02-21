@@ -40,7 +40,7 @@
 	
 	<div class="container mt-3 px-5 px-sm-2">
     	<div class="row justify-content-center">
-        	<div class="col-md-8">
+        	<div class="col-md-10">
            		<ul class="list-group list-group-flush rounded rounded shadow">
 	                <li class="list-group-item border-0"><strong>Nom :</strong> 
 	                ${sessionScope.utilisateur.nom}</li>
@@ -53,15 +53,17 @@
 	                <li class="list-group-item border-0"><strong>Téléphone :</strong> 
 	                ${sessionScope.utilisateur.telephone}</li>
 	                <li class="list-group-item border-0">
-	                	<div class="d-flex justify-content-between">
+	                	<div class="d-flex justify-content-between pb-2">
 	                		<div>
-	                			<strong>Votre restaurant favori :</strong>
+	                			<strong>Restaurant favori :</strong>
 	                			<span class="ms-1">${utilisateur.restaurant.nom}</span>
 	                		</div> 
+	                		<c:if test="${not empty utilisateur.restaurant}">
 	                		<form action="supprimerfavori" method="post">
     							<input type="hidden" name="idRestaurant" value="${utilisateur.restaurant.id}" />
-    							<button type="submit" class="btn btn-link text-danger p-0 text-decoration-none">❌</button>
+    							<button type="submit" class="btn btn-outline-danger rounded-pill btn-sm pt-0 pb-1 text-decoration-none">Retirer le favori</button>
 							</form>
+							</c:if>
 						</div>
 	                </li>
 	            </ul>
