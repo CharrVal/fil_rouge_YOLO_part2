@@ -21,13 +21,13 @@
 	  <div class="container">
 	    <div class="row align-items-start">
 	      <div class="col-10">
-	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">${restaurant.nom}</h1>
+	        <h1 class="display-4 fw-bold lh-1 text-white text-shadow pb-3">${restaurant.nom}</h1>
 	      </div>
-	      <div class="col-2 text-end">
+	      <div class="col-2 text-end text-shadow">
 	      	<c:if test="${not empty utilisateur}">
 		        <a href="ajouterfavori?idRestaurant=${restaurant.id }">
-			        <c:if test="${utilisateur.restaurant.id == restaurant.id}"><i class="bi bi-star-fill border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
-			        <c:if test="${utilisateur.restaurant.id != restaurant.id}"><i class="bi bi-star border-2 rounded-0 text-white fs-3 ml-auto"></i></c:if>
+			        <c:if test="${utilisateur.restaurant.id == restaurant.id}"><i class="bi bi-star-fill border-2 rounded-0 text-white fs-2 ml-auto"></i></c:if>
+			        <c:if test="${utilisateur.restaurant.id != restaurant.id}"><i class="bi bi-star border-2 rounded-0 text-white fs-2 ml-auto"></i></c:if>
 		        </a>
 	        </c:if>
 	      </div>
@@ -42,7 +42,7 @@
 		<div class="container d-flex justify-content-center mb-5">
 			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
 				<div class="card-body text-center">
-					<a href="connexion" class="card-text">Vous avez déjà un compte</a>
+					<a href="connexion" class="text-black">Vous avez déjà un compte</a>
 				</div>
 			</div>
 		</div>
