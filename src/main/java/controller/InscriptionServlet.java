@@ -65,7 +65,7 @@ public class InscriptionServlet extends HttpServlet {
 
 	        utilisateurbll.insert(utilisateur);
 	        
-	        response.sendRedirect("connexion");
+	        response.sendRedirect("accueil");
 	    } catch (UtilisateurException | NamingException e) {
 	        e.printStackTrace();
 	        request.setAttribute("error", "Erreur lors de l'inscription : " + e.getMessage());

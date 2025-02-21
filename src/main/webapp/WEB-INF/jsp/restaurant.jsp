@@ -55,7 +55,7 @@
 		</div>
 	</c:if>
 	
-	<div class="container d-flex justify-content-center mt-5">
+	<div class="container d-flex justify-content-center mt-3">
 		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
 		  <div class="card-body text-center">
 		    <h2 class="card-title">Notre adresse</h2>
@@ -86,7 +86,16 @@
 			</c:forEach>
 	</div>
 	
-		<div class="card-body text-center my-3">
+	<div class="container d-flex justify-content-center mt-3">
+		<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
+		  <div class="card-body text-center">
+		    <h2 class="card-title">Nous contacter</h2>
+		    <p class="card-text">${restaurant.email}</p>
+		  </div>
+		</div>
+	</div>
+	
+		<div class="card-body text-center my-3 mt-3">
 			<form action="carte" method="GET">
 				<input type="hidden" name="id" value="${carte.id}">
 				<input  type="submit" value="Voir la carte" class="btn btn-outline-dark rounded-pill">

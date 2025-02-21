@@ -67,3 +67,4 @@ local.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 target/m2e-wtp/web-resources/META-INF/maven/fil_rouge_YOLO_part2/fil_rouge_YOLO_part2/pom.properties
+/target/
