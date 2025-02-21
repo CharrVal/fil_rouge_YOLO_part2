@@ -39,13 +39,13 @@ public class inscriptionServlet extends HttpServlet {
 	        login == null || login.isEmpty() || 
 	        mdp == null || mdp.isEmpty() || 
 	        mdp2 == null || mdp2.isEmpty())) {
-			request.setAttribute("error", "Tous les champs sont obligatoires.");
+			request.setAttribute("errorVide", "Tous les champs sont obligatoires.");
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
 	        return;
 	    }
 
-	    if (!mdp.equals(mdp2)) {
-	    	request.setAttribute("error", "Les mots de passe ne correspondent pas.");
+		if (!mdp.equals(mdp2)) {
+	    	request.setAttribute("errorMp", "Les mots de passe ne correspondent pas.");
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
 	        return;
 	    }
@@ -67,8 +67,10 @@ public class inscriptionServlet extends HttpServlet {
 	        
 	        response.sendRedirect("connexion");
 	    } catch (UtilisateurException e) {
+	        System.out.println("Utilisateur inscrit  ++++++++++++++++++++"+e.getErreurs().get("nom"));
+
 	        e.printStackTrace();
-	        request.setAttribute("error",  e.getErreurs());
+	        request.setAttribute("erreur",  e.getErreurs());
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
 		} catch (NamingException e) {
 			e.printStackTrace();

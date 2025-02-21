@@ -107,7 +107,7 @@
 				<label class="form-label" for="telephone">Téléphone</label> <input
 					   class="form-control ${not empty erreur['telephone'] ? 'is-invalid' : '' }" 
  						type="text" id="telephone" name="telephone"
-					placeholder="Votre numéro de téléphone 06 00 00 00 00" required>
+					placeholder="Votre numéro de téléphone 0612164545" required>
 				 <div class="invalid-feedback">${erreur['telephone']}</div>
 			</div>
 			<div class="col-12 pt-3">
@@ -116,6 +116,8 @@
 			</div>
 
 		</form>
+		
+		
 
 	</div>
 
