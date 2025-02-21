@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/carte")
-public class carteServlet extends HttpServlet {
+public class AfficherCarteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CarteBLL cartebll = new CarteBLL();
 	private RestaurantBLL restaurantbll;
@@ -37,7 +37,4 @@ public class carteServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/jsp/carte.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
 }
