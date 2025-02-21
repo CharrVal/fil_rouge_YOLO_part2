@@ -33,10 +33,8 @@
 	<div class="container d-flex justify-content-center mt-5">
 		<h2 class="display-4 fw-bold lh-1 pb-3">Créez votre compte</h2>
 	</div>
-	
-	       <div class="invalid-feedback">
-            ${not empty erreur ? errorVide : 'Ce login est déjà utilisé.'}
-        </div>
+
+
 
 	<div class="container d-flex justify-content-start mt-3 px-5 px-sm-2">
 
@@ -44,14 +42,15 @@
 			<div class="col-md-12">
 				<label class="form-label" for="nom">Nom</label> <input type="text"
 					class="form-control ${not empty erreur['nom'] ? 'is-invalid' : '' }"
-					id="nom" name="nom" placeholder="Votre nom" required>
+					id="nom" name="nom" placeholder="Votre nom" value="${nom }"
+					required>
 				<div class="invalid-feedback">${erreur['nom']}</div>
 			</div>
 			<div class="col-md-12">
 				<label class="form-label" for="prenom">Prénom</label> <input
 					class="form-control ${not empty erreur['prenom'] ? 'is-invalid' : '' }"
 					type="text" id="prenom" name="prenom" placeholder="Votre prénom"
-					required>
+					value="${prenom }" required>
 				<div class="invalid-feedback">${erreur['prenom']}</div>
 			</div>
 			<div class="col-md-12">
@@ -107,7 +106,7 @@
 				<label class="form-label" for="email">E-mail</label> <input
 					class="form-control ${not empty erreur['email'] ? 'is-invalid' : '' }"
 					type="text" id="email" name="email" placeholder="Votre e-mail"
-					required>
+					value="${email }" required>
 				<div class="invalid-feedback">${erreur['email']}</div>
 
 			</div>
@@ -115,7 +114,8 @@
 				<label class="form-label" for="telephone">Téléphone</label> <input
 					class="form-control ${not empty erreur['telephone'] ? 'is-invalid' : '' }"
 					type="text" id="telephone" name="telephone"
-					placeholder="Votre numéro de téléphone 0612164545" required>
+					placeholder="Votre numéro de téléphone 0612164545" value="${tel }"
+					required>
 				<div class="invalid-feedback">${erreur['telephone']}</div>
 			</div>
 			<div class="col-12 pt-3">

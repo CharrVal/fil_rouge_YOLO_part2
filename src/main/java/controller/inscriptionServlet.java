@@ -31,6 +31,11 @@ public class inscriptionServlet extends HttpServlet {
 		String mdp2 = request.getParameter("mdp2");
 		String email = request.getParameter("email");
 		String tel = request.getParameter("telephone");
+		request.setAttribute("nom", nom);
+		request.setAttribute("prenom", prenom);
+		request.setAttribute("login", login);
+		request.setAttribute("email", email);
+		request.setAttribute("tel", tel);
 		
 		if ((nom == null || nom.isEmpty() || 
 	        prenom == null || prenom.isEmpty() || 
