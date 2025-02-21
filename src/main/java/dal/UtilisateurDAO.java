@@ -11,13 +11,13 @@ import javax.persistence.TypedQuery;
 
 import bo.Utilisateur;
 
-public class UtilisateurDAO implements DAO<Utilisateur>{
+public class UtilisateurDAO implements DAO<Utilisateur> {
 	private EntityManagerFactory emf;
-	
+
 	public UtilisateurDAO() {
 		emf = Persistence.createEntityManagerFactory("SQLServer");
 	}
-	
+
 	@Override
 	public List<Utilisateur> select() {
 		EntityManager em = emf.createEntityManager();
@@ -60,6 +60,7 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	
 	
 
+
 	@Override
 	public void update(Utilisateur utilisateur) {
 		EntityManager em = emf.createEntityManager();
@@ -71,8 +72,8 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 			e.printStackTrace();
 			em.getTransaction().rollback();
 		}
-		
-		em.close();	
+
+		em.close();
 	}
 
 	@Override
@@ -86,14 +87,14 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 			e.printStackTrace();
 			em.getTransaction().rollback();
 		}
-		
-		em.close();		
+
+		em.close();
 	}
 
 	@Override
 	public void delete(Utilisateur utilisateur) {
 		EntityManager em = emf.createEntityManager();
-		
+
 		em.getTransaction().begin();
 		try {
 			em.remove(em.merge(utilisateur));
@@ -102,8 +103,8 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 			e.printStackTrace();
 			em.getTransaction().rollback();
 		}
-		
-		em.close();	
+
+		em.close();
 	}
 
 	@Override
@@ -125,76 +126,93 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 		} finally {
 			em.close();
 		}
-		
+
 		return utilisateur;
 	}
-	
+
 	public Utilisateur connecterUtilisateur(String login, String password) throws NamingException {
-	    EntityManager em = emf.createEntityManager();
-	    Utilisateur utilisateur = null;
+		EntityManager em = emf.createEntityManager();
+		Utilisateur utilisateur = null;
 
-	    try {
-	        utilisateur = em.createQuery("SELECT u FROM Utilisateur u WHERE u.login = :login AND u.password = :password", Utilisateur.class)
-	                        .setParameter("login", login)
-	                        .setParameter("password", password)
-	                        .getSingleResult();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        em.close();
-	    }
+		try {
+			utilisateur = em
+					.createQuery("SELECT u FROM Utilisateur u WHERE u.login = :login AND u.password = :password",
+							Utilisateur.class)
+					.setParameter("login", login).setParameter("password", password).getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
 
-	    return utilisateur;
+		return utilisateur;
 	}
-	
+
 	public boolean utilisateurValide(Utilisateur utilisateur) {
-	    EntityManager em = emf.createEntityManager();
-	    
-	    try {
-	        Utilisateur existingUtilisateur = selectById(utilisateur.getId());
+		EntityManager em = emf.createEntityManager();
 
-	        if (existingUtilisateur != null) {
-	            if (existingUtilisateur.getPassword().equals(utilisateur.getPassword())) {
-	                return true;
-	            }
-	        }
-	        return false;
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return false;
-	    } finally {
-	        em.close();
-	    }
-		
+		try {
+			Utilisateur existingUtilisateur = selectById(utilisateur.getId());
+
+			if (existingUtilisateur != null) {
+				if (existingUtilisateur.getPassword().equals(utilisateur.getPassword())) {
+					return true;
+				}
+			}
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			em.close();
+		}
+
 	}
-	
-	
+
 	public boolean utilisateurExiste(Utilisateur utilisateur) {
-	    EntityManager em = emf.createEntityManager();
-	    
-	    try {
-	        // Query the database for the user by login
-	        String query = "SELECT u FROM Utilisateur u WHERE u.login = :login";
-	        Utilisateur existingUtilisateur = em.createQuery(query, Utilisateur.class)
-	                                             .setParameter("login", utilisateur.getLogin())
-	                                             .getResultStream()
-	                                             .findFirst()
-	                                             .orElse(null);
-	        
-	        // If a user with the login exists, check the password
-	        if (existingUtilisateur != null) {
-	            if (existingUtilisateur.getPassword().equals(utilisateur.getPassword())) {
-	                return true;
-	            }
-	        }
-	        return false;
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return false;
-	    } finally {
-	        em.close();
-	    }
+		EntityManager em = emf.createEntityManager();
+
+		try {
+			// Query the database for the user by login
+			String query = "SELECT u FROM Utilisateur u WHERE u.login = :login";
+			Utilisateur existingUtilisateur = em.createQuery(query, Utilisateur.class)
+					.setParameter("login", utilisateur.getLogin()).getResultStream().findFirst().orElse(null);
+
+			// If a user with the login exists, check the password
+			if (existingUtilisateur != null) {
+				if (existingUtilisateur.getPassword().equals(utilisateur.getPassword())) {
+					return true;
+				}
+			}
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			em.close();
+		}
 	}
 
+	public boolean loginExiste(Utilisateur utilisateur) {
+		EntityManager em = emf.createEntityManager();
+
+		try {
+			// Query the database for the user by login
+			String query = "SELECT u FROM Utilisateur u WHERE u.login = :login";
+			Utilisateur existingUtilisateur = em.createQuery(query, Utilisateur.class)
+					.setParameter("login", utilisateur.getLogin()).getResultStream().findFirst().orElse(null);
+
+			// If a user with the login exists, return true
+			if (existingUtilisateur != null) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			em.close();
+		}
+	}
 
 }

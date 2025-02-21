@@ -27,7 +27,7 @@
 	  <div class="container">
 	    <div class="row align-items-start">
 	      <div class="col-12">
-	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">Bonjour ${utilisateur.prenom}!</h1>
+	        <h1 class="display-4 fw-bold lh-1 text-white pb-3">Bonjour ${sessionScope.utilisateur.prenom}!</h1>
 	      </div>
 	    </div>
 	  </div>

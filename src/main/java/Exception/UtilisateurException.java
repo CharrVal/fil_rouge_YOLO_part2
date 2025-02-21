@@ -14,9 +14,5 @@ public class UtilisateurException extends Exception {
 	public HashMap<String, String> getErreurs() {
 		return erreurs;
 	}
-	
-	public void setErreurs(HashMap<String, String> erreurs) {
-		this.erreurs = erreurs;
-	}
 
 }
