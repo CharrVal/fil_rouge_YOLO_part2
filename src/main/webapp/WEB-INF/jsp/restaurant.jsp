@@ -42,7 +42,7 @@
 		<div class="container d-flex justify-content-center mb-5">
 			<div class="card border-0 rounded-0 bg-transparent" style="width: 100%;">
 				<div class="card-body text-center">
-					<a href="connexion" class="card-text">Vous avez déjà un compte</a>
+					<a href="connexion" class="text-black">Vous avez déjà un compte</a>
 				</div>
 			</div>
 		</div>
