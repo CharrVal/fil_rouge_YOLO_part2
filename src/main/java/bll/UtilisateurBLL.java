@@ -28,13 +28,18 @@ public class UtilisateurBLL {
 	}
 
 	public void insert(Utilisateur utilisateur) throws UtilisateurException, NamingException {
-
-		verifier(utilisateur);
-		Utilisateur existant = dao.connecterUtilisateur(utilisateur.getLogin(), utilisateur.getPassword());
-		if (existant != null) {
-			throw new UtilisateurException("Un compte avec ce login existe déjà.", null);
+		HashMap<String, String> erreur = new HashMap<String, String>();
+		if (dao.loginExiste(utilisateur)) {
+			erreur.put("login", "Ce login est déjà utilisé");
+			throw new UtilisateurException("erreur", erreur);
+		} else {
+			verifier(utilisateur);
+			try {
+				dao.insert(utilisateur);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		dao.insert(utilisateur);
 	}
 
 	public void delete(Utilisateur utilisateur) {
@@ -49,26 +54,27 @@ public class UtilisateurBLL {
 	public Utilisateur connecterUtilisateur(String login, String password) throws NamingException {
 		return dao.connecterUtilisateur(login, password);
 	}
-	
+
 	public boolean utilisateurValide(Utilisateur utilisateur) throws SQLException {
 		dao = new UtilisateurDAO();
-		return dao.utilisateurValide(utilisateur);	
+		return dao.utilisateurValide(utilisateur);
 	}
-	
+
 	public boolean utilisateurExiste(Utilisateur utilisateur) throws SQLException {
 		dao = new UtilisateurDAO();
-		return dao.utilisateurExiste(utilisateur);	
+		return dao.utilisateurExiste(utilisateur);
 	}
 
 	public void verifier(Utilisateur utilisateur) throws UtilisateurException {
 		HashMap<String, String> erreurs = new HashMap<String, String>();
-		if (utilisateur.getNom() == null || utilisateur.getNom().length() < 3 || utilisateur.getNom().length() > 20) {
-			erreurs.put("nom", "Le nom doit faire entre 3 et 20 caractères.");
+		if (!nomValide(utilisateur.getNom())) {
+			erreurs.put("nom",
+					"Le nom est invalide. Il doit contenir uniquement des lettres et avoir entre 2 et 20 caractères.");
 		}
 
-		if (utilisateur.getPrenom() == null || utilisateur.getPrenom().length() < 3
-				|| utilisateur.getPrenom().length() > 20) {
-			erreurs.put("prenom", "Le prénom doit faire entre 3 et 20 caractères.");
+		if (!nomValide(utilisateur.getPrenom())) {
+			erreurs.put("prenom",
+					"Le prénom invalide. Il doit contenir uniquement des lettres et avoir entre 2 et 20 caractères.");
 		}
 
 		if (utilisateur.getTelephone() == null || !numeroValide(utilisateur.getTelephone())) {
@@ -82,9 +88,9 @@ public class UtilisateurBLL {
 		if (!loginValide(utilisateur.getLogin())) {
 			erreurs.put("login", "Votre login n'est pas valide !");
 		}
-		if (!isValidPassword(utilisateur.getPassword())) {
+		if (!passwordValide(utilisateur.getPassword())) {
 			erreurs.put("password",
-					"Votre mot de passe n'est pas valide! Il doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.");
+					"Votre mot de passe n'est pas valide! Il doit contenir au moins 4 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.");
 		}
 
 		if (!erreurs.isEmpty()) {
@@ -105,7 +111,12 @@ public class UtilisateurBLL {
 		return login != null && login.matches("^[a-zA-Z0-9._-]{3,20}$");
 	}
 
-	public static boolean isValidPassword(String password) {
-		return password != null && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$");
+	public static boolean passwordValide(String password) {
+		return password != null && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{4,}$");
 	}
+
+	public static boolean nomValide(String nom) {
+		return nom != null && nom.matches("^[A-Za-zÀ-ÖØ-öø-ÿ -]{2,20}$");
+	}
+
 }

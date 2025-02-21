@@ -31,6 +31,11 @@ public class InscriptionServlet extends HttpServlet {
 		String mdp2 = request.getParameter("mdp2");
 		String email = request.getParameter("email");
 		String tel = request.getParameter("telephone");
+		request.setAttribute("nom", nom);
+		request.setAttribute("prenom", prenom);
+		request.setAttribute("login", login);
+		request.setAttribute("email", email);
+		request.setAttribute("tel", tel);
 		
 		if ((nom == null || nom.isEmpty() || 
 	        prenom == null || prenom.isEmpty() || 
@@ -39,13 +44,13 @@ public class InscriptionServlet extends HttpServlet {
 	        login == null || login.isEmpty() || 
 	        mdp == null || mdp.isEmpty() || 
 	        mdp2 == null || mdp2.isEmpty())) {
-			request.setAttribute("error", "Tous les champs sont obligatoires.");
+			request.setAttribute("errorVide", "Tous les champs sont obligatoires.");
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
 	        return;
 	    }
 
-	    if (!mdp.equals(mdp2)) {
-	    	request.setAttribute("error", "Les mots de passe ne correspondent pas.");
+		if (!mdp.equals(mdp2)) {
+	    	request.setAttribute("errorMp", "Les mots de passe ne correspondent pas.");
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
 	        return;
 	    }
@@ -65,11 +70,16 @@ public class InscriptionServlet extends HttpServlet {
 
 	        utilisateurbll.insert(utilisateur);
 	        
-	        response.sendRedirect("accueil");
-	    } catch (UtilisateurException | NamingException e) {
+	        response.sendRedirect("connexion");
+	    } catch (UtilisateurException e) {
 	        e.printStackTrace();
-	        request.setAttribute("error", "Erreur lors de l'inscription : " + e.getMessage());
+	        request.setAttribute("erreur",  e.getErreurs());
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
-	    }
+		} catch (NamingException e) {
+			e.printStackTrace();
+			request.setAttribute("error", "Une erreur est survenue. Veuillez réessayer.");
+			request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);
+		}
+	    
 	}	
 }
