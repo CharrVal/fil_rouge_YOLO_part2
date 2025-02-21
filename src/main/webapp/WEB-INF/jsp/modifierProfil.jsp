@@ -19,6 +19,11 @@
 <body>
 
 	<%@ include file="/WEB-INF/fragments/header.jspf"%>
+	
+	
+	<div class="container d-flex justify-content-center mt-5">
+	     <h2 class="display-4 fw-bold lh-1 pb-3">Modifiez votre profil</h2>
+	</div>
 
 	<div class="container d-flex justify-content-start mt-5">
 		<form class="row g-3" action="modifier" method="post">
@@ -79,13 +84,11 @@
 				<div class="invalid-feedback">${erreur['password']}</div>
 			</div>
 
-			<div class="col-12">
-				<button type="submit" class="btn btn-primary">Modifier</button>
+			<div class="col-md-12 mt-5 text-center">
+				<button type="submit" class="btn btn-success rounded-pill px-4 mx-2y">Modifier</button>
 			</div>
 		</form>
 	</div>
-
-
 
 	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
 
