@@ -172,3 +172,48 @@ footer {
 .error_input {
 	border: solid #800000 1px;
 }
+
+.about-section {
+    margin-top: 40px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('https://source.unsplash.com/1600x900/?pizza,restaurant'); /* Image de fond floutée */
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #D35400; /* Orange chaleureux */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.about-section h3::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background-color: #D35400;
+    display: block;
+    margin: 10px auto;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+}
+
+.about-section p:last-child {
+    font-weight: bold;
+    font-style: italic;
+    color: #E74C3C;
+}
