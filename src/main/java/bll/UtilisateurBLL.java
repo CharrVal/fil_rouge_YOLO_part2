@@ -50,6 +50,11 @@ public class UtilisateurBLL {
 		dao = new UtilisateurDAO();
 		return dao.utilisateurValide(utilisateur);	
 	}
+	
+	public boolean utilisateurExiste(Utilisateur utilisateur) throws SQLException {
+		dao = new UtilisateurDAO();
+		return dao.utilisateurExiste(utilisateur);	
+	}
 
 	public void verifier(Utilisateur utilisateur) throws UtilisateurException {
 		HashMap<String, String> erreurs = new HashMap<String, String>();

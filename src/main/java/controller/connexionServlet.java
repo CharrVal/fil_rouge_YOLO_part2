@@ -63,12 +63,12 @@ public class connexionServlet extends HttpServlet {
             if (rememberMe != null && rememberMe.equals("on")) {
                 Cookie cookieUsername = new Cookie("login", utilisateur.getLogin());
                 cookieUsername.setMaxAge(604800); // 7 days in seconds
-                cookieUsername.setPath("/");
+                //cookieUsername.setPath("/");
                 response.addCookie(cookieUsername);
                 
                 Cookie cookiePassword = new Cookie("password", utilisateur.getPassword());
                 cookiePassword.setMaxAge(604800); // 7 days in seconds
-                cookiePassword.setPath("/");
+                //cookiePassword.setPath("/");
                 response.addCookie(cookiePassword);
             }
             
