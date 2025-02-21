@@ -2,6 +2,7 @@ package controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,6 +20,16 @@ public class DeconnexionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
+		
+		
+		Cookie cookieUsername = new Cookie("login", "");
+		cookieUsername.setMaxAge(0);
+		response.addCookie(cookieUsername);
+		
+		Cookie cookiePassword = new Cookie("password", "");
+		cookiePassword.setMaxAge(0);
+		response.addCookie(cookiePassword);
+				
 		request.getRequestDispatcher("/WEB-INF/jsp/accueil.jsp").forward(request, response);
 	}
 
