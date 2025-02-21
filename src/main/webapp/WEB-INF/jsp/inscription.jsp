@@ -51,18 +51,18 @@
 				<div class="invalid-feedback">${erreur['prenom']}</div>
 			</div>
 			<div class="col-md-12">
-				<label class="form-label" for="login">Identifiant</label> 
-				<input class="form-control ${not empty erreur['login'] ? 'is-invalid' : '' }" 
- 						type="text" id="login" name="login"
-						placeholder="Votre identifiant" required>
-				<div class="invalid-feedback">${erreur['login']}</div>		
+				<label class="form-label" for="login">Identifiant</label> <input
+					class="form-control ${not empty erreur['login'] ? 'is-invalid' : '' }"
+					type="text" id="login" name="login" placeholder="Votre identifiant"
+					required>
+				<div class="invalid-feedback">${erreur['login']}</div>
 			</div>
 			<div class="col-md-6">
 				<label class="form-label" for="mdp">Mot de passe</label> <input
-					   class="form-control ${not empty erreur['password'] ? 'is-invalid' : '' }" 
- 						type="password" name="mdp" id="mdp"
+					class="form-control ${not empty erreur['password'] ? 'is-invalid' : '' }"
+					type="password" name="mdp" id="mdp"
 					placeholder="Votre mot de passe" required>
-					<div class="invalid-feedback">${erreur['password']}</div>
+				<div class="invalid-feedback">${erreur['password']}</div>
 				<button class="btn btn-outline-dark rounded-pill mt-2" type="button"
 					onclick="displayPassword()">Afficher/Masquer</button>
 			</div>
@@ -97,18 +97,18 @@
 			</div>
 			<div class="col-md-12">
 				<label class="form-label" for="email">E-mail</label> <input
-					   class="form-control ${not empty erreur['email'] ? 'is-invalid' : '' }" 
- 						type="text" id="email" name="email"
-					placeholder="Votre e-mail" required>
+					class="form-control ${not empty erreur['email'] ? 'is-invalid' : '' }"
+					type="text" id="email" name="email" placeholder="Votre e-mail"
+					required>
 				<div class="invalid-feedback">${erreur['email']}</div>
-					
+
 			</div>
 			<div class="col-md-12">
 				<label class="form-label" for="telephone">Téléphone</label> <input
-					   class="form-control ${not empty erreur['telephone'] ? 'is-invalid' : '' }" 
- 						type="text" id="telephone" name="telephone"
+					class="form-control ${not empty erreur['telephone'] ? 'is-invalid' : '' }"
+					type="text" id="telephone" name="telephone"
 					placeholder="Votre numéro de téléphone 0612164545" required>
-				 <div class="invalid-feedback">${erreur['telephone']}</div>
+				<div class="invalid-feedback">${erreur['telephone']}</div>
 			</div>
 			<div class="col-12 pt-3">
 				<button type="submit"
@@ -116,8 +116,8 @@
 			</div>
 
 		</form>
-		
-		
+
+
 
 	</div>
 
