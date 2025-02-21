@@ -22,6 +22,10 @@ public class UtilisateurBLL {
 	public Utilisateur selectById(int id) {
 		return dao.selectById(id);
 	}
+	
+	public Utilisateur selectByLoginPassword(String login, String password) {
+		return dao.selectByLoginPassword(login, password);
+	}
 
 	public void insert(Utilisateur utilisateur) throws UtilisateurException, NamingException {
 

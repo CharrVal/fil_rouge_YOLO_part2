@@ -21,7 +21,6 @@ public class DeconnexionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
 		
-		
 		Cookie cookieUsername = new Cookie("login", "");
 		cookieUsername.setMaxAge(0);
 		response.addCookie(cookieUsername);
