@@ -1,5 +1,10 @@
 package controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
+import bll.UtilisateurBLL;
+import bo.Utilisateur;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -11,12 +16,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
-import java.sql.SQLException;
-
-import bll.UtilisateurBLL;
-import bo.Utilisateur;
 
 
 @WebFilter(
@@ -77,7 +76,7 @@ import bo.Utilisateur;
 	                utilisateur.setPassword(password);
 	                UtilisateurBLL bll = new UtilisateurBLL();
 	                try {
-	                    if (bll.utilisateurValide(utilisateur)) {
+	                    if (bll.utilisateurExiste(utilisateur)) {
 	                        httpRequest.getSession().setAttribute("utilisateur", utilisateur);
 	                        chain.doFilter(httpRequest, httpResponse);
 	                        return;

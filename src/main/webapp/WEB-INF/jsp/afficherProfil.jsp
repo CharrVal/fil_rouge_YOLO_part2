@@ -77,16 +77,7 @@
 			</form>
 		</div>
 	</div>
-
-	<div class="container d-flex justify-content-center">
-		<div class="col-md-12 mt-3 text-center">
-			<form action="supprimer" method="get">
-				<input type="hidden" name="idUtilisateur"/>
-				<button type="submit" class="btn btn-outline-dark rounded-pill">Supprimer</button>
-			</form>
-		</div>
-	</div>
-		
+	
 	<div class="container d-flex justify-content-center mb-2">
 		<div class="col-md-12 mt-3 text-center">
 			<form action="deconnexion" method="get">
@@ -94,6 +85,17 @@
 			</form>
 		</div>
 	</div>
+
+	<div class="container d-flex justify-content-center">
+		<div class="col-md-12 mt-3 text-center">
+			<form action="supprimer" method="get">
+				<input type="hidden" name="idUtilisateur"/>
+				<button type="submit" class="btn btn-danger rounded-pill">Supprimer</button>
+			</form>
+		</div>
+	</div>
+		
+	
 
 	<%@ include file="/WEB-INF/fragments/footer.jspf"%>
 
