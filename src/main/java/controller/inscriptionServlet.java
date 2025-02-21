@@ -67,8 +67,6 @@ public class inscriptionServlet extends HttpServlet {
 	        
 	        response.sendRedirect("connexion");
 	    } catch (UtilisateurException e) {
-	        System.out.println("Utilisateur inscrit  ++++++++++++++++++++"+e.getErreurs().get("nom"));
-
 	        e.printStackTrace();
 	        request.setAttribute("erreur",  e.getErreurs());
 	        request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);

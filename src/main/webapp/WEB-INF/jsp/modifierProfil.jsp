@@ -76,8 +76,25 @@
 					id="inputMp" name="inputMp"
 					value="<c:out value='${sessionScope.utilisateur.password}'/>"
 					required>
+
+				<button class="btn btn-outline-dark rounded-pill mt-2" type="button"
+					onclick="displayPasswordbis()">Afficher/Masquer</button>
+
+				<script>
+					function displayPasswordbis() {
+						var passwordField = document.getElementById("inputMp");
+						if (passwordField.type === "password") {
+							passwordField.type = "text"; // Si c'est un champ de type "password", on le change en "text"
+						} else {
+							passwordField.type = "password"; // Sinon, on le change de nouveau en "password"
+						}
+					}
+				</script>
+
+				<!-- Affichage de l'erreur si présente -->
 				<div class="invalid-feedback">${erreur['password']}</div>
 			</div>
+
 
 			<div class="col-12">
 				<button type="submit" class="btn btn-primary">Modifier</button>

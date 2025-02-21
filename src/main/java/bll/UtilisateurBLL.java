@@ -24,13 +24,27 @@ public class UtilisateurBLL {
 	}
 
 	public void insert(Utilisateur utilisateur) throws UtilisateurException, NamingException {
-
+		HashMap<String, String> erreur = new HashMap<String, String>();
 		verifier(utilisateur);
+
 		Utilisateur existant = dao.connecterUtilisateur(utilisateur.getLogin(), utilisateur.getPassword());
+
 		if (existant != null) {
-			throw new UtilisateurException("Un compte avec ce login existe déjà.", null);
+			System.out.println("existant---------------------------------------------------------------------");
+			int id = 1;
+			System.out.println(id);
+			erreur.put("loginvide", "Ce login est déjà utilisé");
+			throw new UtilisateurException("erreur", erreur);
+		} else {
+			try {
+				System.out.println("insert++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+				dao.insert(utilisateur);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		dao.insert(utilisateur);
+
+
 	}
 
 	public void delete(Utilisateur utilisateur) {
@@ -77,9 +91,9 @@ public class UtilisateurBLL {
 		if (!loginValide(utilisateur.getLogin())) {
 			erreurs.put("login", "Votre login n'est pas valide !");
 		}
-		if (!nomValide(utilisateur.getPassword())) {
+		if (!passwordValide(utilisateur.getPassword())) {
 			erreurs.put("password",
-					"Votre mot de passe n'est pas valide! Il doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.");
+					"Votre mot de passe n'est pas valide! Il doit contenir au moins 4 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.");
 		}
 
 		if (!erreurs.isEmpty()) {
@@ -101,7 +115,7 @@ public class UtilisateurBLL {
 	}
 
 	public static boolean passwordValide(String password) {
-		return password != null && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$");
+		return password != null && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{4,}$");
 	}
 	public static boolean nomValide(String nom) {
 	    return nom != null && nom.matches("^[A-Za-zÀ-ÖØ-öø-ÿ -]{2,20}$");

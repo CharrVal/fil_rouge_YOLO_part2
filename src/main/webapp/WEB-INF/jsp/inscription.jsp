@@ -33,6 +33,10 @@
 	<div class="container d-flex justify-content-center mt-5">
 		<h2 class="display-4 fw-bold lh-1 pb-3">Créez votre compte</h2>
 	</div>
+	
+	       <div class="invalid-feedback">
+            ${not empty erreur ? errorVide : 'Ce login est déjà utilisé.'}
+        </div>
 
 	<div class="container d-flex justify-content-start mt-3 px-5 px-sm-2">
 
@@ -68,8 +72,12 @@
 			</div>
 			<div class="col-md-6">
 				<label class="form-label" for="mdp2">Répéter votre mot de
-					passe</label> <input class="form-control" type="password" name="mdp2"
-					id="mdp2" placeholder="Répétez votre mot de passe" required>
+					passe</label> <input
+					class="form-control ${not empty errorMp ? 'is-invalid' : '' }"
+					type="password" name="mdp2" id="mdp2"
+					placeholder="Répétez votre mot de passe" required>
+				<div class="invalid-feedback">${errorMp}</div>
+
 				<button class="btn btn-outline-dark rounded-pill mt-2" type="button"
 					onclick="displayPasswordbis()">Afficher/Masquer</button>
 
