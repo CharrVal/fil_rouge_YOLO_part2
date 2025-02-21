@@ -141,6 +141,34 @@ public class UtilisateurDAO implements DAO<Utilisateur>{
 	    }
 		
 	}
+	
+	
+	public boolean utilisateurExiste(Utilisateur utilisateur) {
+	    EntityManager em = emf.createEntityManager();
+	    
+	    try {
+	        // Query the database for the user by login
+	        String query = "SELECT u FROM Utilisateur u WHERE u.login = :login";
+	        Utilisateur existingUtilisateur = em.createQuery(query, Utilisateur.class)
+	                                             .setParameter("login", utilisateur.getLogin())
+	                                             .getResultStream()
+	                                             .findFirst()
+	                                             .orElse(null);
+	        
+	        // If a user with the login exists, check the password
+	        if (existingUtilisateur != null) {
+	            if (existingUtilisateur.getPassword().equals(utilisateur.getPassword())) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    } finally {
+	        em.close();
+	    }
+	}
 
 
 }
