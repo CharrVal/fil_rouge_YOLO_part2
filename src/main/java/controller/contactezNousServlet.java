@@ -25,7 +25,7 @@ public class contactezNousServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//ici gérer l'envoi du message !
 	}
 
 }
